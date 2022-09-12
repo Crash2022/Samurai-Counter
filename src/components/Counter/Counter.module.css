@@ -63,3 +63,40 @@ button:disabled {
 
 /*----------------------------------------------*/
 
+.settingsMonitor {
+
+}
+.setMonitorValues {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+.valueTitle {
+    font-size: 30px;
+    padding-right: 20px;
+}
+.valueNumber {
+    font-size: 30px;
+}
+.valueNumber select {
+    height: 50px;
+}
+
+/*.setMonMaxValue {
+    display: flex;
+    justify-content: space-between;
+}*/
+/*.setMonStartValue {
+    display: flex;
+    justify-content: space-between;
+}*/
+.set button {
+    padding: 10px;
+    background-color: green;
+    color: white;
+    font-size: 30px;
+    border: none;
+    border-radius: 10px;
+    width: 200px;
+}

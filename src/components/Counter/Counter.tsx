@@ -23,12 +23,12 @@ export const Counter = () => {
     return (
         <div className={styles.counter}>
             <CounterMonitor counter={counter}
-                          maxValue={MAX_VALUE}/>
+                            maxValue={MAX_VALUE}/>
             <CounterControl counter={counter}
-                          increase={IncreaseTimer}
-                          reset={ResetTimer}
-                          startValue={START_VALUE}
-                          maxValue={MAX_VALUE}/>
+                            increase={IncreaseTimer}
+                            reset={ResetTimer}
+                            startValue={START_VALUE}
+                            maxValue={MAX_VALUE}/>
         </div>
     );
 }
