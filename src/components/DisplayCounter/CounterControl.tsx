@@ -1,9 +1,9 @@
 import React from 'react';
 import '../../App.css';
-import styles from './Counter.module.css'
+import stylesDisplay from './DisplayCounter.module.css'
 import {Button} from "../../UI/Button";
 
-type TimerControlPropsType = {
+type CounterControlPropsType = {
     counter: number
     increase: () => void
     reset: () => void
@@ -11,7 +11,7 @@ type TimerControlPropsType = {
     maxValue: number
 }
 
-export const CounterControl = (props: TimerControlPropsType) => {
+export const CounterControl: React.FC<CounterControlPropsType> = (props) => {
 
     const onClickHandlerStart = () => {
         props.increase();
@@ -22,8 +22,8 @@ export const CounterControl = (props: TimerControlPropsType) => {
     }
 
     return (
-        <div className={styles.counterControl}>
-            <div className={styles.increase}>
+        <div className={stylesDisplay.counterControl}>
+            <div className={stylesDisplay.increase}>
                 {/*<button onClick={onClickHandlerStart}
                         disabled={props.timer === 5 ? true : false}>increase</button>*/}
                 <Button name={'increase'}
@@ -31,7 +31,7 @@ export const CounterControl = (props: TimerControlPropsType) => {
                         disabled={props.counter === props.maxValue}
                 />
             </div>
-            <div className={styles.reset}>
+            <div className={stylesDisplay.reset}>
                 {/*<button onClick={onClickHandlerReset}
                 disabled={props.timer === 0 ? true : false}>reset</button>*/}
                 <Button name={'reset'}

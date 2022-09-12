@@ -32,18 +32,22 @@ img{vertical-align: top;}
 
 .App {
   /*border: 1px solid black;*/
-  max-width: 1200px;
   margin: 0 auto;
 }
 
-ul {
+/*ul {
   list-style-type: disc;
   list-style-position: inside;
-}
+}*/
 
 .wrapper {
   text-align: center;
   display: flex;
-  flex-direction: row-reverse;
+  justify-content: center;
+}
+
+.counterWrapper {
+  max-width: 1200px;
+  display: flex;
   justify-content: center;
 }

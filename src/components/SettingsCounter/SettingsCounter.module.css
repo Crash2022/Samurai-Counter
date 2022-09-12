@@ -1,0 +1,30 @@
+.settingsMonitor {
+    /*пустой блок для связки элементов*/
+}
+.setMonitorValues {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+.valueTitle {
+    font-size: 30px;
+    padding-right: 20px;
+    width: 200px;
+}
+.valueNumber {
+    font-size: 30px;
+}
+.valueNumber input {
+    height: 30px;
+}
+
+.set button {
+    padding: 10px;
+    background-color: green;
+    color: white;
+    font-size: 30px;
+    border: none;
+    border-radius: 10px;
+    width: 200px;
+}

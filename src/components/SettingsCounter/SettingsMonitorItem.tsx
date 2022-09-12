@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import '../../App.css';
-import styles from '../Counter/Counter.module.css'
+import stylesSet from './SettingsCounter.module.css'
 
 export type MonitorSetItemPropsType = {
     title: string
@@ -9,11 +9,11 @@ export type MonitorSetItemPropsType = {
 export const SettingsMonitorItem: React.FC<MonitorSetItemPropsType> = ({title}) => {
 
     return (
-        <div className={styles.setMonitorValues}>
-            <div className={styles.valueTitle}>
+        <div className={stylesSet.setMonitorValues}>
+            <div className={stylesSet.valueTitle}>
                 {title}
             </div>
-            <div className={styles.valueNumber}>
+            <div className={stylesSet.valueNumber}>
                 <input type="number" step={1}/>
             </div>
         </div>

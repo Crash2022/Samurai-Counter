@@ -1,0 +1,39 @@
+.counterMonitorStop {
+    color: red;
+    background-color: white;
+}
+
+.counterControl {
+    border: 2px solid green;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 10px;
+    height: 120px;
+}
+.counterControl > div {
+    padding: 10px;
+}
+
+.increase button {
+    padding: 10px;
+    background-color: green;
+    color: white;
+    font-size: 30px;
+    border: none;
+    border-radius: 10px;
+}
+.reset button {
+    padding: 10px;
+    background-color: green;
+    color: white;
+    font-size: 30px;
+    border: none;
+    border-radius: 10px;
+}
+button:disabled {
+    background-color: white;
+    border: 1px solid green;
+    color: black;
+}

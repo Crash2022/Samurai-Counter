@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import '../../App.css';
-import styles from './Counter.module.css'
-import {CounterMonitor} from "./CounterMonitor";
-import {CounterControl} from "./CounterControl";
+import {SettingsCounter} from "../SettingsCounter/SettingsCounter";
+import {DisplayCounter} from "../DisplayCounter/DisplayCounter";
 
 export const Counter = () => {
 
@@ -19,7 +18,7 @@ export const Counter = () => {
 
     const [counter, setCounter] = useState<number>(0);
 
-    useEffect(()=>{
+    useEffect(() => {
         let localValue = localStorage.getItem('countValue')
         if (localValue) {
             let newLocalValue = JSON.parse(localValue);
@@ -27,31 +26,30 @@ export const Counter = () => {
         }
     }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
         localStorage.setItem('countValue', JSON.stringify(counter));
     }, [counter])
 
     const START_VALUE = 0;
     const MAX_VALUE = 5;
 
-    const IncreaseTimer = () => {
+    const IncreaseCounter = () => {
         let newCount = counter + 1;
         setCounter(newCount);
     }
 
-    const ResetTimer = () => {
+    const ResetCounter = () => {
         setCounter(0);
     }
 
     return (
-        <div className={styles.counter}>
-            <CounterMonitor counter={counter}
-                            maxValue={MAX_VALUE}/>
-            <CounterControl counter={counter}
-                            increase={IncreaseTimer}
-                            reset={ResetTimer}
+        <div className="counterWrapper">
+            <SettingsCounter/>
+            <DisplayCounter counter={counter}
                             startValue={START_VALUE}
-                            maxValue={MAX_VALUE}/>
+                            maxValue={MAX_VALUE}
+                            increase={IncreaseCounter}
+                            reset={ResetCounter}/>
         </div>
     );
 }

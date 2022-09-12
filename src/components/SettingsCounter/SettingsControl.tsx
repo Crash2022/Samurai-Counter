@@ -1,8 +1,8 @@
 import React from 'react';
 import '../../App.css';
-import styles from '../Counter/Counter.module.css'
+import styles from '../DisplayCounter/DisplayCounter.module.css'
+import stylesSet from './SettingsCounter.module.css'
 import {Button} from "../../UI/Button";
-
 
 export const SettingsControl = () => {
 
@@ -12,7 +12,7 @@ export const SettingsControl = () => {
 
     return (
         <div className={styles.counterControl}>
-            <div className={styles.set}>
+            <div className={stylesSet.set}>
                 <Button name={'set'}
                         callback={onClickHandlerSet}
                 />
