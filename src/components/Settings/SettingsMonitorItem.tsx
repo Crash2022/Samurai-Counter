@@ -14,10 +14,7 @@ export const SettingsMonitorItem: React.FC<MonitorSetItemPropsType> = ({title}) 
                 {title}
             </div>
             <div className={styles.valueNumber}>
-                <select>
-                    <option>Пункт 1</option>
-                    <option>Пункт 2</option>
-                </select>
+                <input type="number" step={1}/>
             </div>
         </div>
     );

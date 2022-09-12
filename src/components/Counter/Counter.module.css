@@ -74,12 +74,13 @@ button:disabled {
 .valueTitle {
     font-size: 30px;
     padding-right: 20px;
+    width: 200px;
 }
 .valueNumber {
     font-size: 30px;
 }
-.valueNumber select {
-    height: 50px;
+.valueNumber input {
+    height: 30px;
 }
 
 .set button {

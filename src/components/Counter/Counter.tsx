@@ -17,6 +17,8 @@ export const Counter = () => {
         }
     }*/
 
+    const [counter, setCounter] = useState<number>(0);
+
     useEffect(()=>{
         let localValue = localStorage.getItem('countValue')
         if (localValue) {
@@ -27,9 +29,7 @@ export const Counter = () => {
 
     useEffect(()=>{
         localStorage.setItem('countValue', JSON.stringify(counter));
-    }, [])
-
-    const [counter, setCounter] = useState<number>(0);
+    }, [counter])
 
     const START_VALUE = 0;
     const MAX_VALUE = 5;
