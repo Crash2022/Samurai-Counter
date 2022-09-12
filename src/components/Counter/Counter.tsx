@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import '../App.css';
-import styles from './Timer.module.css'
+import '../../App.css';
+import styles from './Counter.module.css'
 import {CounterMonitor} from "./CounterMonitor";
 import {CounterControl} from "./CounterControl";
 

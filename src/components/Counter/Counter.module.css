@@ -2,7 +2,7 @@
     border: 3px solid green;
     width: 500px;
     margin: auto;
-    margin-top: 200px;
+    margin: 200px 20px;
     padding: 30px;
     border-radius: 10px;
     background-color: seashell;
@@ -16,6 +16,10 @@
     background-color: green;
     color: white;
     border-radius: 10px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .counterMonitorStop {
     color: red;
@@ -56,3 +60,6 @@ button:disabled {
     border: 1px solid green;
     color: black;
 }
+
+/*----------------------------------------------*/
+

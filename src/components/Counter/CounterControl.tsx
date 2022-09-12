@@ -1,7 +1,7 @@
 import React from 'react';
-import '../App.css';
-import styles from './Timer.module.css'
-import {Button} from "./Button";
+import '../../App.css';
+import styles from './Counter.module.css'
+import {Button} from "../../UI/Button";
 
 type TimerControlPropsType = {
     counter: number
