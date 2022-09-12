@@ -13,7 +13,7 @@ export const SettingsControl = () => {
     return (
         <div className={styles.counterControl}>
             <div className={stylesSet.set}>
-                <Button name={'set'}
+                <Button name={'Установить'}
                         callback={onClickHandlerSet}
                 />
             </div>

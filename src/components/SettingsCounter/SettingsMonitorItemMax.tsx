@@ -6,7 +6,7 @@ export type MonitorSetItemPropsType = {
     title: string
 }
 
-export const SettingsMonitorItem: React.FC<MonitorSetItemPropsType> = ({title}) => {
+export const SettingsMonitorItemMax: React.FC<MonitorSetItemPropsType> = ({title}) => {
 
     return (
         <div className={stylesSet.setMonitorValues}>
@@ -14,7 +14,10 @@ export const SettingsMonitorItem: React.FC<MonitorSetItemPropsType> = ({title}) 
                 {title}
             </div>
             <div className={stylesSet.valueNumber}>
-                <input type="number" step={1}/>
+                <input type="number"
+                       step={1}
+                       placeholder={'Выберите число'}
+                       onChange={(event)=>console.log(event.currentTarget.value)}/>
             </div>
         </div>
     );

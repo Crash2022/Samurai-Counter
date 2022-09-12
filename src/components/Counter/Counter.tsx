@@ -44,7 +44,7 @@ export const Counter = () => {
 
     return (
         <div className="counterWrapper">
-            <SettingsCounter/>
+            <SettingsCounter />
             <DisplayCounter counter={counter}
                             startValue={START_VALUE}
                             maxValue={MAX_VALUE}

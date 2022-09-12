@@ -4,7 +4,7 @@ import stylesMain from '../Counter/Counter.module.css'
 import {CounterMonitor} from "./CounterMonitor";
 import {CounterControl} from "./CounterControl";
 
-type DisplayCounterPropsType = {
+export type DisplayCounterPropsType = {
     counter: number
     startValue: number
     maxValue: number
