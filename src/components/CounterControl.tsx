@@ -4,14 +4,14 @@ import styles from './Timer.module.css'
 import {Button} from "./Button";
 
 type TimerControlPropsType = {
-    timer: number
+    counter: number
     increase: () => void
     reset: () => void
-    minValue: number
+    startValue: number
     maxValue: number
 }
 
-export const TimerControl = (props: TimerControlPropsType) => {
+export const CounterControl = (props: TimerControlPropsType) => {
 
     const onClickHandlerStart = () => {
         props.increase();
@@ -22,13 +22,13 @@ export const TimerControl = (props: TimerControlPropsType) => {
     }
 
     return (
-        <div className={styles.timerControl}>
+        <div className={styles.counterControl}>
             <div className={styles.increase}>
                 {/*<button onClick={onClickHandlerStart}
                         disabled={props.timer === 5 ? true : false}>increase</button>*/}
                 <Button name={'increase'}
                         callback={onClickHandlerStart}
-                        disabled={props.timer === props.maxValue}
+                        disabled={props.counter === props.maxValue}
                 />
             </div>
             <div className={styles.reset}>
@@ -36,7 +36,7 @@ export const TimerControl = (props: TimerControlPropsType) => {
                 disabled={props.timer === 0 ? true : false}>reset</button>*/}
                 <Button name={'reset'}
                         callback={onClickHandlerReset}
-                        disabled={props.timer === props.minValue}
+                        disabled={props.counter === props.startValue}
                 />
             </div>
         </div>

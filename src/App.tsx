@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import {Timer} from "./components/Timer";
+import {Counter} from "./components/Counter";
 
 export const App = () => {
     return (
         <div className="App">
             <div className="wrapper">
-                <Timer />
+                <Counter />
             </div>
         </div>
     );
