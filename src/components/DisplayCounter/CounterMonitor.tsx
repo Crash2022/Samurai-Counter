@@ -6,6 +6,8 @@ import stylesDisplay from './DisplayCounter.module.css'
 type CounterMonitorPropsType = {
     counter: number
     maxValue: number
+    error: string | null
+    setError: (errorValue: string) => void
 }
 
 export const CounterMonitor: React.FC<CounterMonitorPropsType> = (props) => {
@@ -14,7 +16,10 @@ export const CounterMonitor: React.FC<CounterMonitorPropsType> = (props) => {
 
     return (
         <div className={`${stylesMain.counterMonitor} ${counterMonitorStopStyle}`}>
-            {props.counter}
+            { props.error
+                ? <div className={stylesDisplay.counterMonitorStopError}>{props.error}</div>
+                : props.counter
+            }
         </div>
     );
 }

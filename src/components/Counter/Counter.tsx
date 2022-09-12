@@ -49,23 +49,31 @@ export const Counter = () => {
     //const START_VALUE = inputStartValue;
     //const MAX_VALUE = inputMaxValue;
 
+    const [error, setError] = useState<string | null>(null);
+
     const pushValue = () => {
-        setCounter(inputStartValue);
-        setInputStartValue(inputStartValue);
-        setInputMaxValue(inputMaxValue);
+            setCounter(inputStartValue);
+            setInputStartValue(inputStartValue);
+            setInputMaxValue(inputMaxValue);
     }
 
     return (
         <div className="counterWrapper">
             <SettingsCounter counter={counter}
-                             startValue={setInputStartValue}
-                             maxValue={setInputMaxValue}
-                             pushValue={pushValue}/>
+                             startValue={inputStartValue}
+                             setInputStartValue={setInputStartValue}
+                             maxValue={inputMaxValue}
+                             setInputMaxValue={setInputMaxValue}
+                             pushValue={pushValue}
+                             error={error}
+                             setError={setError}/>
             <DisplayCounter counter={counter}
                             startValue={inputStartValue}
                             maxValue={inputMaxValue}
                             increase={IncreaseCounter}
-                            reset={ResetCounter}/>
+                            reset={ResetCounter}
+                            error={error}
+                            setError={setError}/>
         </div>
     );
 }

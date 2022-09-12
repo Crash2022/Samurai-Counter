@@ -10,6 +10,8 @@ export type DisplayCounterPropsType = {
     maxValue: number
     increase: () => void
     reset: () => void
+    error: string | null
+    setError: (errorValue: string) => void
 }
 
 export const DisplayCounter: React.FC<DisplayCounterPropsType> = (props) => {
@@ -17,12 +19,16 @@ export const DisplayCounter: React.FC<DisplayCounterPropsType> = (props) => {
     return (
         <div className={stylesMain.displayCounter}>
             <CounterMonitor counter={props.counter}
-                            maxValue={props.maxValue}/>
+                            maxValue={props.maxValue}
+                            error={props.error}
+                            setError={props.setError}
+            />
             <CounterControl counter={props.counter}
                             increase={props.increase}
                             reset={props.reset}
                             startValue={props.startValue}
-                            maxValue={props.maxValue}/>
+                            maxValue={props.maxValue}
+            />
         </div>
     );
 }

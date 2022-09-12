@@ -11,6 +11,9 @@ export type MonitorSetItemStartPropsType = {
 export const SettingsMonitorItemStart: React.FC<MonitorSetItemStartPropsType> = (props) => {
 
     const onChangeClickHandler = (event: ChangeEvent<HTMLInputElement>) => {
+        /*if (inputStartValue > inputMaxValue) {
+            setError('Начальное значение должно быть меньше максимального')
+        } else {*/
         //console.log(event.currentTarget.value);
         props.startValue(+event.currentTarget.value);
     }

@@ -2,6 +2,11 @@
     color: red;
     background-color: white;
 }
+.counterMonitorStopError {
+    color: red;
+    background-color: white;
+    font-size: 30px;
+}
 
 .counterControl {
     border: 2px solid green;
