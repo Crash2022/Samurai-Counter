@@ -26,7 +26,7 @@ export const SettingsMonitorItemStart: React.FC<MonitorSetItemStartPropsType> = 
                        min={0}
                        /*min={props.startValue}
                        max={props.maxValue}*/
-                       placeholder={'Выберите число'}
+                       placeholder={'Введите число'}
                        onChange={onChangeClickHandler}/>
             </div>
         </div>

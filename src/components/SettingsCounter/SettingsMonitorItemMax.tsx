@@ -23,9 +23,10 @@ export const SettingsMonitorItemMax: React.FC<MonitorSetItemMaxPropsType> = (pro
             <div className={stylesSet.valueNumber}>
                 <input type="number"
                        step={1}
+                       min={0}
                        /*min={props.startValue}
                        max={props.maxValue}*/
-                       placeholder={'Выберите число'}
+                       placeholder={'Введите число'}
                        onChange={onChangeClickHandler}
                 />
             </div>

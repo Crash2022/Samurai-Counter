@@ -8,7 +8,7 @@ import {SettingsMonitorItemStart} from "./SettingsMonitorItemStart";
 export type SettingsMonitorPropsType = {
     counter: number
     startValue: (startValue: number) => void
-    maxValue: (startValue: number) => void
+    maxValue: (maxValue: number) => void
 }
 
 export const SettingsMonitor: React.FC<SettingsMonitorPropsType> = (props) => {

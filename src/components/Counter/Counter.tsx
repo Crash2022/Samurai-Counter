@@ -16,7 +16,7 @@ export const Counter = () => {
         }
     }*/
 
-    const [counter, setCounter] = useState<number>(0);
+    //const [counter, setCounter] = useState<number>(0);
 
     /*useEffect(() => {
         let localValue = localStorage.getItem('countValue')
@@ -42,7 +42,9 @@ export const Counter = () => {
     /*--------------------------------------------*/
 
     const [inputStartValue, setInputStartValue] = useState<number>(0);
-    const [inputMaxValue, setInputMaxValue] = useState<number>(5);
+    const [inputMaxValue, setInputMaxValue] = useState<number>(0);
+
+    const [counter, setCounter] = useState<number>(0);
 
     const START_VALUE = inputStartValue;
     const MAX_VALUE = inputMaxValue;
@@ -50,6 +52,7 @@ export const Counter = () => {
     const pushValue = () => {
         setInputStartValue(inputStartValue);
         setInputMaxValue(inputMaxValue);
+        setCounter(inputStartValue);
     }
 
     return (
