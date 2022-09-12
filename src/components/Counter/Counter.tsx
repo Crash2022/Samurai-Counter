@@ -1,10 +1,33 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../../App.css';
 import styles from './Counter.module.css'
 import {CounterMonitor} from "./CounterMonitor";
 import {CounterControl} from "./CounterControl";
 
 export const Counter = () => {
+
+    /*const setLocalStorage = () => {
+        localStorage.setItem('countValue', JSON.stringify(counter))
+    }
+    const getLocalStorage = () => {
+        let localValue = localStorage.getItem('countValue')
+        if (localValue) {
+            let newLocalValue = JSON.parse(localValue)
+            setCounter(newLocalValue)
+        }
+    }*/
+
+    useEffect(()=>{
+        let localValue = localStorage.getItem('countValue')
+        if (localValue) {
+            let newLocalValue = JSON.parse(localValue);
+            setCounter(newLocalValue);
+        }
+    }, [])
+
+    useEffect(()=>{
+        localStorage.setItem('countValue', JSON.stringify(counter));
+    }, [])
 
     const [counter, setCounter] = useState<number>(0);
 
