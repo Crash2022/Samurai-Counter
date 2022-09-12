@@ -4,10 +4,15 @@ import styles from '../DisplayCounter/DisplayCounter.module.css'
 import stylesSet from './SettingsCounter.module.css'
 import {Button} from "../../UI/Button";
 
-export const SettingsControl = () => {
+export type SettingsControlPropsType = {
+    pushValue: () => void
+}
+
+export const SettingsControl: React.FC<SettingsControlPropsType> = (props) => {
 
     const onClickHandlerSet = () => {
-        console.log('working')
+        //console.log('working')
+        props.pushValue()
     }
 
     return (

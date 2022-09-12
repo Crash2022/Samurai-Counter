@@ -18,7 +18,7 @@ export const Counter = () => {
 
     const [counter, setCounter] = useState<number>(0);
 
-    useEffect(() => {
+    /*useEffect(() => {
         let localValue = localStorage.getItem('countValue')
         if (localValue) {
             let newLocalValue = JSON.parse(localValue);
@@ -28,10 +28,7 @@ export const Counter = () => {
 
     useEffect(() => {
         localStorage.setItem('countValue', JSON.stringify(counter));
-    }, [counter])
-
-    const START_VALUE = 0;
-    const MAX_VALUE = 5;
+    }, [counter])*/
 
     const IncreaseCounter = () => {
         let newCount = counter + 1;
@@ -42,9 +39,25 @@ export const Counter = () => {
         setCounter(0);
     }
 
+    /*--------------------------------------------*/
+
+    const [inputStartValue, setInputStartValue] = useState<number>(0);
+    const [inputMaxValue, setInputMaxValue] = useState<number>(5);
+
+    const START_VALUE = inputStartValue;
+    const MAX_VALUE = inputMaxValue;
+
+    const pushValue = () => {
+        setInputStartValue(inputStartValue);
+        setInputMaxValue(inputMaxValue);
+    }
+
     return (
         <div className="counterWrapper">
-            <SettingsCounter />
+            <SettingsCounter counter={counter}
+                             startValue={setInputStartValue}
+                             maxValue={setInputMaxValue}
+                             pushValue={pushValue}/>
             <DisplayCounter counter={counter}
                             startValue={START_VALUE}
                             maxValue={MAX_VALUE}
