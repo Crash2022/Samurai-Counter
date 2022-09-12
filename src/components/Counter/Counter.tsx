@@ -36,7 +36,7 @@ export const Counter = () => {
     }
 
     const ResetCounter = () => {
-        setCounter(0);
+        setCounter(inputStartValue);
     }
 
     /*--------------------------------------------*/
@@ -46,13 +46,13 @@ export const Counter = () => {
 
     const [counter, setCounter] = useState<number>(0);
 
-    const START_VALUE = inputStartValue;
-    const MAX_VALUE = inputMaxValue;
+    //const START_VALUE = inputStartValue;
+    //const MAX_VALUE = inputMaxValue;
 
     const pushValue = () => {
+        setCounter(inputStartValue);
         setInputStartValue(inputStartValue);
         setInputMaxValue(inputMaxValue);
-        setCounter(inputStartValue);
     }
 
     return (
@@ -62,8 +62,8 @@ export const Counter = () => {
                              maxValue={setInputMaxValue}
                              pushValue={pushValue}/>
             <DisplayCounter counter={counter}
-                            startValue={START_VALUE}
-                            maxValue={MAX_VALUE}
+                            startValue={inputStartValue}
+                            maxValue={inputMaxValue}
                             increase={IncreaseCounter}
                             reset={ResetCounter}/>
         </div>
