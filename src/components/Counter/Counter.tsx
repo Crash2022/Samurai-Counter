@@ -5,6 +5,8 @@ import {DisplayCounter} from "../DisplayCounter/DisplayCounter";
 
 export const Counter = () => {
 
+    //const [counter, setCounter] = useState<number>(0);
+
     /*const setLocalStorage = () => {
         localStorage.setItem('countValue', JSON.stringify(counter))
     }
@@ -15,8 +17,6 @@ export const Counter = () => {
             setCounter(newLocalValue)
         }
     }*/
-
-    //const [counter, setCounter] = useState<number>(0);
 
     /*useEffect(() => {
         let localValue = localStorage.getItem('countValue')
@@ -30,44 +30,59 @@ export const Counter = () => {
         localStorage.setItem('countValue', JSON.stringify(counter));
     }, [counter])*/
 
-    const increaseCounter = () => {
-        if (inputStartValue > inputMaxValue) {
-            setError('Начальное значение должно быть меньше максимального');
-        } else {
-            let newCount = counter + 1;
-            setCounter(newCount);
-        }
-    }
-
-    const resetCounter = () => {
-        setCounter(inputStartValue);
-    }
-
-    /*--------------------------------------------*/
+    //const START_VALUE = inputStartValue;
+    //const MAX_VALUE = inputMaxValue;
 
     const [inputStartValue, setInputStartValue] = useState<number>(0);
     const [inputMaxValue, setInputMaxValue] = useState<number>(0);
 
     const [counter, setCounter] = useState<number>(0);
-    const [disabled, setDisabled] = useState<boolean>(true);
-
-    //const START_VALUE = inputStartValue;
-    //const MAX_VALUE = inputMaxValue;
+    const [disableInc, setDisableInc] = useState<boolean>(true);
+    const [disableReset, setDisableReset] = useState<boolean>(true);
 
     const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        if (inputStartValue > inputMaxValue) {
+            setError('Начальное значение должно быть меньше максимального');
+            setDisableReset(true);
+        } else {
+            setError('');
+        }
+    },[inputStartValue, inputMaxValue]);
 
     const pushValue = () => {
 
         if (inputStartValue > inputMaxValue) {
             setError('Начальное значение должно быть меньше максимального');
         } else {
-            setDisabled(false);
+            // setDisableInc(false);
+            // setDisableReset(false);
             setCounter(inputStartValue);
             setInputStartValue(inputStartValue);
             setInputMaxValue(inputMaxValue);
             setError('');
         }
     }
+
+    const increaseCounter = () => {
+        // if (inputStartValue < inputMaxValue) {
+            let newCount = counter + 1;
+            setCounter(newCount);
+        // } else {
+        //     setDisableReset(true);
+        // }
+    }
+
+    const resetCounter = () => {
+        if (counter === inputStartValue) {
+            // setDisableReset(true);
+        }
+        // setDisableInc(false);
+        setCounter(inputStartValue);
+    }
+
+    /*--------------------------------------------*/
 
     return (
         <div className="counterWrapper">
@@ -87,8 +102,10 @@ export const Counter = () => {
                             reset={resetCounter}
                             error={error}
                             setError={setError}
-                            disabled={disabled}
-                            setDisabled={setDisabled}
+                            disableInc={disableInc}
+                            setDisableInc={setDisableInc}
+                            disableReset={disableReset}
+                            setDisableReset={setDisableReset}
             />
         </div>
     );

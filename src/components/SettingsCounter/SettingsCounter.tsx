@@ -19,7 +19,6 @@ export type SettingsCounterPropsType = {
 export const SettingsCounter: React.FC<SettingsCounterPropsType> = (props) => {
 
     const onClickHandlerSet = () => {
-        //console.log('working')
         props.pushValue();
     }
 

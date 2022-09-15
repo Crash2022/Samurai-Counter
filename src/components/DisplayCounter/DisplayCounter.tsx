@@ -12,8 +12,10 @@ export type DisplayCounterPropsType = {
     reset: () => void
     error: string | null
     setError: (errorValue: string) => void
-    disabled: boolean
-    setDisabled: (buttonValue: boolean) => void
+    disableInc: boolean
+    setDisableInc: (buttonValue: boolean) => void
+    disableReset: boolean
+    setDisableReset: (buttonValue: boolean) => void
 }
 
 export const DisplayCounter: React.FC<DisplayCounterPropsType> = (props) => {
@@ -30,8 +32,10 @@ export const DisplayCounter: React.FC<DisplayCounterPropsType> = (props) => {
                             reset={props.reset}
                             startValue={props.startValue}
                             maxValue={props.maxValue}
-                            disabled={props.disabled}
-                            setDisabled={props.setDisabled}
+                            disableInc={props.disableInc}
+                            setDisableInc={props.setDisableInc}
+                            disableReset={props.disableReset}
+                            setDisableReset={props.setDisableReset}
             />
         </div>
     );
