@@ -5,29 +5,6 @@ import {DisplayCounter} from "../DisplayCounter/DisplayCounter";
 
 export const Counter = () => {
 
-    /*const setLocalStorage = () => {
-        localStorage.setItem('countValue', JSON.stringify(counter))
-    }
-    const getLocalStorage = () => {
-        let localValue = localStorage.getItem('countValue')
-        if (localValue) {
-            let newLocalValue = JSON.parse(localValue)
-            setCounter(newLocalValue)
-        }
-    }*/
-
-    /*useEffect(() => {
-        let localValue = localStorage.getItem('countValue')
-        if (localValue) {
-            let newLocalValue = JSON.parse(localValue);
-            setCounter(newLocalValue);
-        }
-    }, [])
-
-    useEffect(() => {
-        localStorage.setItem('countValue', JSON.stringify(counter));
-    }, [counter])*/
-
     //const START_VALUE = inputStartValue;
     //const MAX_VALUE = inputMaxValue;
 
@@ -85,23 +62,23 @@ export const Counter = () => {
     /*--------------------------------------------*/
 
     useEffect(() => {
-        let localValue = localStorage.getItem('inputStartValue')
-        if (localValue) {
-            let newLocalValue = JSON.parse(localValue);
-            setInputStartValue(newLocalValue);
+        let localValueMax = localStorage.getItem('inputMaxValue')
+        if (localValueMax) {
+            let newLocalValueMax = JSON.parse(localValueMax);
+            setInputMaxValue(newLocalValueMax);
         }
 
-        let localValue2 = localStorage.getItem('inputMaxValue')
-        if (localValue2) {
-            let newLocalValue2 = JSON.parse(localValue2);
-            setInputMaxValue(newLocalValue2);
+        let localValueStart = localStorage.getItem('inputStartValue')
+        if (localValueStart) {
+            let newLocalValueStart = JSON.parse(localValueStart);
+            setInputStartValue(newLocalValueStart);
         }
     }, [])
 
     useEffect(() => {
-        localStorage.setItem('inputStartValue', JSON.stringify(inputStartValue));
         localStorage.setItem('inputMaxValue', JSON.stringify(inputMaxValue));
-    }, [setInputStartValue, setInputMaxValue])
+        localStorage.setItem('inputStartValue', JSON.stringify(inputStartValue));
+    }, [inputStartValue, inputMaxValue])
 
     /*--------------------------------------------*/
 
