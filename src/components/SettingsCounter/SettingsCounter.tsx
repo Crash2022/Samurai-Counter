@@ -14,6 +14,7 @@ export type SettingsCounterPropsType = {
     pushValue: () => void
     error: string | null
     setError: (errorValue: string) => void
+    setIsSetting: (isSetting: boolean) => void
 }
 
 export const SettingsCounter: React.FC<SettingsCounterPropsType> = (props) => {
@@ -23,10 +24,12 @@ export const SettingsCounter: React.FC<SettingsCounterPropsType> = (props) => {
     }
 
     const onChangeClickHandlerMax = (event: ChangeEvent<HTMLInputElement>) => {
+        props.setIsSetting(true);
         props.setInputMaxValue(+event.currentTarget.value);
     }
 
     const onChangeClickHandlerStart = (event: ChangeEvent<HTMLInputElement>) => {
+        props.setIsSetting(true);
         props.setInputStartValue(+event.currentTarget.value);
     }
 
@@ -49,7 +52,7 @@ export const SettingsCounter: React.FC<SettingsCounterPropsType> = (props) => {
                         <div className={stylesSet.valueNumber}>
                             <input type="number"
                                    step={1}
-                                   min={0}
+                                   //min={0}
                                    placeholder={'Введите число'}
                                    value={props.maxValue}
                                    onChange={onChangeClickHandlerMax}
@@ -63,7 +66,7 @@ export const SettingsCounter: React.FC<SettingsCounterPropsType> = (props) => {
                         <div className={stylesSet.valueNumber}>
                             <input type="number"
                                    step={1}
-                                   min={0}
+                                   //min={0}
                                    placeholder={'Введите число'}
                                    value={props.startValue}
                                    onChange={onChangeClickHandlerStart}

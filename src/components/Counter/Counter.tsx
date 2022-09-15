@@ -5,8 +5,6 @@ import {DisplayCounter} from "../DisplayCounter/DisplayCounter";
 
 export const Counter = () => {
 
-    //const [counter, setCounter] = useState<number>(0);
-
     /*const setLocalStorage = () => {
         localStorage.setItem('countValue', JSON.stringify(counter))
     }
@@ -37,15 +35,16 @@ export const Counter = () => {
     const [inputMaxValue, setInputMaxValue] = useState<number>(0);
 
     const [counter, setCounter] = useState<number>(0);
-    const [disableInc, setDisableInc] = useState<boolean>(true);
-    const [disableReset, setDisableReset] = useState<boolean>(true);
+    // const [disableInc, setDisableInc] = useState<boolean>(true);
+    // const [disableReset, setDisableReset] = useState<boolean>(true);
+    const [isSetting, setIsSetting] = useState<boolean>(true);
 
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         if (inputStartValue > inputMaxValue) {
             setError('Начальное значение должно быть меньше максимального');
-            setDisableReset(true);
+            //setDisableReset(true);
         } else {
             setError('');
         }
@@ -58,6 +57,7 @@ export const Counter = () => {
         } else {
             // setDisableInc(false);
             // setDisableReset(false);
+            setIsSetting(false);
             setCounter(inputStartValue);
             setInputStartValue(inputStartValue);
             setInputMaxValue(inputMaxValue);
@@ -94,6 +94,7 @@ export const Counter = () => {
                              pushValue={pushValue}
                              error={error}
                              setError={setError}
+                             setIsSetting={setIsSetting}
             />
             <DisplayCounter counter={counter}
                             startValue={inputStartValue}
@@ -102,10 +103,11 @@ export const Counter = () => {
                             reset={resetCounter}
                             error={error}
                             setError={setError}
-                            disableInc={disableInc}
-                            setDisableInc={setDisableInc}
-                            disableReset={disableReset}
-                            setDisableReset={setDisableReset}
+                            isSetting={isSetting}
+                            // disableInc={disableInc}
+                            // setDisableInc={setDisableInc}
+                            // disableReset={disableReset}
+                            // setDisableReset={setDisableReset}
             />
         </div>
     );

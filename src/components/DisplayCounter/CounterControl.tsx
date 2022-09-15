@@ -9,26 +9,26 @@ type CounterControlPropsType = {
     reset: () => void
     startValue: number
     maxValue: number
-    disableInc: boolean
-    setDisableInc: (buttonValue: boolean) => void
-    disableReset: boolean
-    setDisableReset: (buttonValue: boolean) => void
+    isSetting:boolean
+//     disableInc: boolean
+//     setDisableInc: (buttonValue: boolean) => void
+//     disableReset: boolean
+//     setDisableReset: (buttonValue: boolean) => void
 }
 
 export const CounterControl: React.FC<CounterControlPropsType> = (props) => {
 
     const onClickHandlerStart = () => {
-        if (props.counter === props.maxValue) {
-            props.setDisableInc(true);
-        }
-
+        // if (props.counter === props.maxValue) {
+        //     props.setDisableInc(true);
+        // }
         props.increase();
     }
 
     const onClickHandlerReset = () => {
-        if (props.counter === props.startValue) {
-            props.setDisableInc(true);
-        }
+        // if (props.counter === props.startValue) {
+        //     props.setDisableInc(true);
+        // }
         props.reset();
     }
 
@@ -37,13 +37,13 @@ export const CounterControl: React.FC<CounterControlPropsType> = (props) => {
             <div className={stylesDisplay.increase}>
                 <Button name={'Увеличить'}
                         callback={onClickHandlerStart}
-                        disabled={props.counter === props.maxValue}
+                        disabled={props.counter === props.maxValue || props.isSetting}
                 />
             </div>
             <div className={stylesDisplay.reset}>
                 <Button name={'Сбросить'}
                         callback={onClickHandlerReset}
-                        disabled={props.counter === props.startValue}
+                        disabled={props.counter === props.startValue || props.isSetting}
                 />
             </div>
         </div>

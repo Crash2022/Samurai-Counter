@@ -22,7 +22,7 @@
 }
 
 .counterMonitor.counterMonitorStopError {
-    padding: 0;
+    padding: 10px;
     background-color: white;
     color: red;
     font-size: 30px;
