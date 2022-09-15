@@ -20,3 +20,10 @@
     align-items: center;
     justify-content: center;
 }
+
+.counterMonitor.counterMonitorStopError {
+    padding: 0;
+    background-color: white;
+    color: red;
+    font-size: 30px;
+}

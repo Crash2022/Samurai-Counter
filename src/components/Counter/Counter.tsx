@@ -30,12 +30,16 @@ export const Counter = () => {
         localStorage.setItem('countValue', JSON.stringify(counter));
     }, [counter])*/
 
-    const IncreaseCounter = () => {
-        let newCount = counter + 1;
-        setCounter(newCount);
+    const increaseCounter = () => {
+        if (inputStartValue > inputMaxValue) {
+            setError('Начальное значение должно быть меньше максимального');
+        } else {
+            let newCount = counter + 1;
+            setCounter(newCount);
+        }
     }
 
-    const ResetCounter = () => {
+    const resetCounter = () => {
         setCounter(inputStartValue);
     }
 
@@ -45,6 +49,7 @@ export const Counter = () => {
     const [inputMaxValue, setInputMaxValue] = useState<number>(0);
 
     const [counter, setCounter] = useState<number>(0);
+    const [disabled, setDisabled] = useState<boolean>(true);
 
     //const START_VALUE = inputStartValue;
     //const MAX_VALUE = inputMaxValue;
@@ -52,9 +57,16 @@ export const Counter = () => {
     const [error, setError] = useState<string | null>(null);
 
     const pushValue = () => {
+
+        if (inputStartValue > inputMaxValue) {
+            setError('Начальное значение должно быть меньше максимального');
+        } else {
+            setDisabled(false);
             setCounter(inputStartValue);
             setInputStartValue(inputStartValue);
             setInputMaxValue(inputMaxValue);
+            setError('');
+        }
     }
 
     return (
@@ -66,14 +78,18 @@ export const Counter = () => {
                              setInputMaxValue={setInputMaxValue}
                              pushValue={pushValue}
                              error={error}
-                             setError={setError}/>
+                             setError={setError}
+            />
             <DisplayCounter counter={counter}
                             startValue={inputStartValue}
                             maxValue={inputMaxValue}
-                            increase={IncreaseCounter}
-                            reset={ResetCounter}
+                            increase={increaseCounter}
+                            reset={resetCounter}
                             error={error}
-                            setError={setError}/>
+                            setError={setError}
+                            disabled={disabled}
+                            setDisabled={setDisabled}
+            />
         </div>
     );
 }

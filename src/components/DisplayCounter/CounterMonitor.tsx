@@ -13,11 +13,18 @@ type CounterMonitorPropsType = {
 export const CounterMonitor: React.FC<CounterMonitorPropsType> = (props) => {
 
     let counterMonitorStopStyle = `${props.counter === props.maxValue && stylesDisplay.counterMonitorStop}`;
+    let startValueMaxStopStyle = `${props.error && stylesMain.counterMonitorStopError}`;
 
     return (
-        <div className={`${stylesMain.counterMonitor} ${counterMonitorStopStyle}`}>
-            { props.error
-                ? <div className={stylesDisplay.counterMonitorStopError}>{props.error}</div>
+        <div className={`
+                         ${stylesMain.counterMonitor} 
+                         ${counterMonitorStopStyle} 
+                         ${startValueMaxStopStyle}
+                       `}
+        >
+            {
+                props.error
+                ? props.error
                 : props.counter
             }
         </div>

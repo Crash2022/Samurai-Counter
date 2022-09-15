@@ -9,6 +9,8 @@ type CounterControlPropsType = {
     reset: () => void
     startValue: number
     maxValue: number
+    disabled: boolean
+    setDisabled: (buttonValue: boolean) => void
 }
 
 export const CounterControl: React.FC<CounterControlPropsType> = (props) => {
@@ -24,19 +26,15 @@ export const CounterControl: React.FC<CounterControlPropsType> = (props) => {
     return (
         <div className={stylesDisplay.counterControl}>
             <div className={stylesDisplay.increase}>
-                {/*<button onClick={onClickHandlerStart}
-                        disabled={props.timer === 5 ? true : false}>increase</button>*/}
                 <Button name={'Увеличить'}
                         callback={onClickHandlerStart}
-                        disabled={props.counter === props.maxValue}
+                        disabled={props.disabled}
                 />
             </div>
             <div className={stylesDisplay.reset}>
-                {/*<button onClick={onClickHandlerReset}
-                disabled={props.timer === 0 ? true : false}>reset</button>*/}
                 <Button name={'Сбросить'}
                         callback={onClickHandlerReset}
-                        disabled={props.counter === props.startValue}
+                        disabled={props.disabled}
                 />
             </div>
         </div>

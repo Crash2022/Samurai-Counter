@@ -4,10 +4,6 @@ import stylesMain from '../Counter/Counter.module.css'
 import stylesSet from "./SettingsCounter.module.css";
 import styles from "../DisplayCounter/DisplayCounter.module.css";
 import {Button} from "../../UI/Button";
-//import {SettingsMonitorItemMax} from "./SettingsMonitorItemMax";
-//import {SettingsMonitorItemStart} from "./SettingsMonitorItemStart";
-//import {SettingsMonitor} from "./SettingsMonitor";
-//import {SettingsControl} from "./SettingsControl";
 
 export type SettingsCounterPropsType = {
     counter: number
@@ -28,18 +24,11 @@ export const SettingsCounter: React.FC<SettingsCounterPropsType> = (props) => {
     }
 
     const onChangeClickHandlerMax = (event: ChangeEvent<HTMLInputElement>) => {
-        //console.log('max');
         props.setInputMaxValue(+event.currentTarget.value);
     }
 
     const onChangeClickHandlerStart = (event: ChangeEvent<HTMLInputElement>) => {
-        //console.log(event.currentTarget.value);
-
-        if (props.startValue > props.maxValue) {
-            props.setError('Начальное значение должно быть меньше максимального');
-        } else {
-            props.setInputStartValue(+event.currentTarget.value);
-        }
+        props.setInputStartValue(+event.currentTarget.value);
     }
 
     return (
