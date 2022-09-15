@@ -2,7 +2,7 @@ import React, {ChangeEvent} from 'react';
 import '../../App.css';
 import stylesMain from '../Counter/Counter.module.css'
 import stylesSet from "./SettingsCounter.module.css";
-import styles from "../DisplayCounter/DisplayCounter.module.css";
+import stylesDisplay from "../DisplayCounter/DisplayCounter.module.css";
 import {Button} from "../../UI/Button";
 
 export type SettingsCounterPropsType = {
@@ -14,6 +14,7 @@ export type SettingsCounterPropsType = {
     pushValue: () => void
     error: string | null
     setError: (errorValue: string) => void
+    isSetting: boolean
     setIsSetting: (isSetting: boolean) => void
 }
 
@@ -77,10 +78,11 @@ export const SettingsCounter: React.FC<SettingsCounterPropsType> = (props) => {
                 </div>
             </div>
 
-            <div className={styles.counterControl}>
+            <div className={stylesDisplay.counterControl}>
                 <div className={stylesSet.set}>
                     <Button name={'Установить'}
                             callback={onClickHandlerSet}
+                            disabled={!props.isSetting}
                     />
                 </div>
             </div>

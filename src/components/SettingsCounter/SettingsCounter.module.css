@@ -29,3 +29,8 @@
     border-radius: 10px;
     width: 200px;
 }
+button:disabled {
+    background-color: white;
+    border: 1px solid green;
+    color: black;
+}

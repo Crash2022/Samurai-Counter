@@ -115,6 +115,7 @@ export const Counter = () => {
                              pushValue={pushValue}
                              error={error}
                              setError={setError}
+                             isSetting={isSetting}
                              setIsSetting={setIsSetting}
             />
             <DisplayCounter counter={counter}
