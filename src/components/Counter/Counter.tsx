@@ -84,6 +84,27 @@ export const Counter = () => {
 
     /*--------------------------------------------*/
 
+    useEffect(() => {
+        let localValue = localStorage.getItem('inputStartValue')
+        if (localValue) {
+            let newLocalValue = JSON.parse(localValue);
+            setInputStartValue(newLocalValue);
+        }
+
+        let localValue2 = localStorage.getItem('inputMaxValue')
+        if (localValue2) {
+            let newLocalValue2 = JSON.parse(localValue2);
+            setInputMaxValue(newLocalValue2);
+        }
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem('inputStartValue', JSON.stringify(inputStartValue));
+        localStorage.setItem('inputMaxValue', JSON.stringify(inputMaxValue));
+    }, [setInputStartValue, setInputMaxValue])
+
+    /*--------------------------------------------*/
+
     return (
         <div className="counterWrapper">
             <SettingsCounter counter={counter}
