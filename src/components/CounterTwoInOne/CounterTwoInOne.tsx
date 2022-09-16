@@ -4,8 +4,8 @@ import '../../App.css';
 export const CounterTwoInOne = () => {
 
     return (
-        <div className="App">
-            2
+        <div className="counterWrapper">
+            CounterTwoInOne
         </div>
     );
 }

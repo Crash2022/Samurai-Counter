@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
-import {Counter} from "./components/CounterTwoBlocks/Counter/Counter";
+import {CounterTwoBlocks} from "./components/CounterTwoBlocks/Counter/CounterTwoBlocks";
 import {CounterTwoInOne} from "./components/CounterTwoInOne/CounterTwoInOne";
 
 export const App = () => {
@@ -17,7 +17,7 @@ export const App = () => {
                 <button onClick={onClickHandlerChangeCounter}>Сменить тип счётчика</button>
             </div>
             <div className="wrapper">
-                { changeCounter ? <Counter /> : <CounterTwoInOne /> }
+                { changeCounter ? <CounterTwoBlocks /> : <CounterTwoInOne /> }
             </div>
         </div>
     );

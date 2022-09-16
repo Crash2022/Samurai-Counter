@@ -3,7 +3,7 @@ import '../../../App.css';
 import {SettingsCounter} from "../SettingsCounter/SettingsCounter";
 import {DisplayCounter} from "../DisplayCounter/DisplayCounter";
 
-export const Counter = () => {
+export const CounterTwoBlocks = () => {
 
     const [inputStartValue, setInputStartValue] = useState<number>(0);
     const [inputMaxValue, setInputMaxValue] = useState<number>(0);
