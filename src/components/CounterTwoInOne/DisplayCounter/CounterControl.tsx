@@ -9,7 +9,8 @@ type CounterControlPropsType = {
     reset: () => void
     startValue: number
     maxValue: number
-    isSetting:boolean
+    isSetting: boolean
+    setSettingsOn: () => void
 }
 
 export const CounterControl: React.FC<CounterControlPropsType> = (props) => {
@@ -20,6 +21,10 @@ export const CounterControl: React.FC<CounterControlPropsType> = (props) => {
 
     const onClickHandlerReset = () => {
         props.reset();
+    }
+
+    const onClickHandlerSettingsOn = () => {
+        props.setSettingsOn();
     }
 
     return (
@@ -34,6 +39,12 @@ export const CounterControl: React.FC<CounterControlPropsType> = (props) => {
                 <Button name={'Сбросить'}
                         callback={onClickHandlerReset}
                         disabled={props.counter === props.startValue || props.isSetting}
+                />
+            </div>
+            <div className={stylesDisplay.settings}>
+                <Button name={'Настройки'}
+                        callback={onClickHandlerSettingsOn}
+                        disabled={false}
                 />
             </div>
         </div>

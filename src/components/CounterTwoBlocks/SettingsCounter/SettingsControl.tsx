@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../../App.css';
-import styles from '../DisplayCounter/DisplayCounter.module.css'
-import stylesSet from './SettingsCounter.module.css'
+import styles from '../../../styles/DisplayCounter.module.css'
+import stylesSet from '../../../styles/SettingsCounter.module.css'
 import {Button} from "../../../UI/Button";
 
 export type SettingsControlPropsType = {

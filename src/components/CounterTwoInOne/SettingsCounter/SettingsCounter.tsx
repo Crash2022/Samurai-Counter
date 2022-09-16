@@ -39,13 +39,7 @@ export const SettingsCounter: React.FC<SettingsCounterPropsType> = (props) => {
     let inputErrorStartStyle = `${props.startValue < 0 && stylesSet.settings}`;
 
     return (
-        <div className={stylesMain.displayCounter}>
-
-            {/*<SettingsMonitor counter={props.counter}
-                             startValue={props.startValue}
-                             maxValue={props.maxValue}
-            />
-            <SettingsControl pushValue={props.pushValue}/>*/}
+        <div className={stylesMain.displayCounterV2}>
 
             <div className={stylesMain.counterMonitor}>
                 <div className={stylesSet.settingsMonitor}>

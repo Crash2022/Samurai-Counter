@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../../App.css';
-import stylesMain from '../Counter/Counter.module.css'
-import stylesSet from './SettingsCounter.module.css'
+import stylesMain from '../../../styles/Counter.module.css'
+import stylesSet from '../../../styles/SettingsCounter.module.css'
 import {SettingsMonitorItemMax} from "./SettingsMonitorItemMax";
 import {SettingsMonitorItemStart} from "./SettingsMonitorItemStart";
 

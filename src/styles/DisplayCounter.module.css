@@ -32,6 +32,15 @@
     border: none;
     border-radius: 10px;
 }
+.settings button {
+    padding: 10px;
+    background-color: green;
+    color: white;
+    font-size: 30px;
+    border: none;
+    border-radius: 10px;
+}
+
 button:disabled {
     background-color: white;
     border: 1px solid green;

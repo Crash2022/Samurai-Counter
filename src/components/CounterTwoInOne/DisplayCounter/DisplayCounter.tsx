@@ -14,12 +14,13 @@ export type DisplayCounterPropsType = {
     setError: (errorValue: string) => void
     isSetting: boolean
     startMessage: string
+    setSettingsOn: () => void
 }
 
 export const DisplayCounter: React.FC<DisplayCounterPropsType> = (props) => {
 
     return (
-        <div className={stylesMain.displayCounter}>
+        <div className={stylesMain.displayCounterV2}>
             <CounterMonitor counter={props.counter}
                             startValue={props.startValue}
                             maxValue={props.maxValue}
@@ -33,6 +34,7 @@ export const DisplayCounter: React.FC<DisplayCounterPropsType> = (props) => {
                             startValue={props.startValue}
                             maxValue={props.maxValue}
                             isSetting={props.isSetting}
+                            setSettingsOn={props.setSettingsOn}
             />
         </div>
     );

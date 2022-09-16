@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 import {CounterTwoBlocks} from "./components/CounterTwoBlocks/Counter/CounterTwoBlocks";
-import {CounterTwoInOne} from "./components/CounterTwoInOne/CounterTwoInOne";
+import {CounterTwoInOne} from "./components/CounterTwoInOne/Counter/CounterTwoInOne";
 
 export const App = () => {
 
