@@ -18,6 +18,7 @@
 .valueNumber input {
     height: 30px;
     width: 150px;
+    padding-left: 5px;
 }
 
 .set button {
@@ -33,4 +34,9 @@ button:disabled {
     background-color: white;
     border: 1px solid green;
     color: black;
+}
+
+.settings {
+    background-color: gray;
+    border: 1px solid red;
 }

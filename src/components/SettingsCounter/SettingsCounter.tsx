@@ -34,6 +34,10 @@ export const SettingsCounter: React.FC<SettingsCounterPropsType> = (props) => {
         props.setInputStartValue(+event.currentTarget.value);
     }
 
+    let inputErrorStyle = `${props.startValue === props.maxValue && stylesSet.settings}`;
+    let inputErrorMaxStyle = `${props.maxValue < 0 && stylesSet.settings}`;
+    let inputErrorStartStyle = `${props.startValue < 0 && stylesSet.settings}`;
+
     return (
         <div className={stylesMain.displayCounter}>
 
@@ -57,6 +61,7 @@ export const SettingsCounter: React.FC<SettingsCounterPropsType> = (props) => {
                                    //placeholder={'Введите число'}
                                    value={props.maxValue}
                                    onChange={onChangeClickHandlerMax}
+                                   className={`${inputErrorStyle} ${inputErrorMaxStyle}`}
                             />
                         </div>
                     </div>
@@ -71,6 +76,7 @@ export const SettingsCounter: React.FC<SettingsCounterPropsType> = (props) => {
                                    //placeholder={'Введите число'}
                                    value={props.startValue}
                                    onChange={onChangeClickHandlerStart}
+                                   className={`${inputErrorStyle} ${inputErrorStartStyle}`}
                             />
                         </div>
                     </div>
@@ -82,7 +88,11 @@ export const SettingsCounter: React.FC<SettingsCounterPropsType> = (props) => {
                 <div className={stylesSet.set}>
                     <Button name={'Установить'}
                             callback={onClickHandlerSet}
-                            disabled={!props.isSetting}
+                            disabled={!props.isSetting
+                                || props.startValue === props.maxValue
+                                || props.startValue < 0
+                                || props.maxValue < 0
+                            }
                     />
                 </div>
             </div>
