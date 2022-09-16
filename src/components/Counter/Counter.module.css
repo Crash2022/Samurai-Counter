@@ -21,6 +21,12 @@
     justify-content: center;
 }
 
+.counterMonitor.counterMonitorStartTitle {
+    padding: 10px;
+    background-color: white;
+    color: black;
+    font-size: 30px;
+}
 .counterMonitor.counterMonitorStopError {
     padding: 10px;
     background-color: white;

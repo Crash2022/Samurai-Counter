@@ -90,6 +90,7 @@ export const SettingsCounter: React.FC<SettingsCounterPropsType> = (props) => {
                             callback={onClickHandlerSet}
                             disabled={!props.isSetting
                                 || props.startValue === props.maxValue
+                                || props.startValue > props.maxValue
                                 || props.startValue < 0
                                 || props.maxValue < 0
                             }

@@ -20,26 +20,26 @@ export const Counter = () => {
 
     useEffect(() => {
         if (inputStartValue > inputMaxValue) {
-            setError('Начальное значение должно быть меньше максимального');
+            setError('Начальное значение должно быть меньше максимального!');
             //setDisableReset(true);
         } else {
             setError('Введите значения и нажмите кнопку установить');
         }
         if (inputStartValue === inputMaxValue) {
-            setError('Начальное значение не должно равняться максимальному');
+            setError('Начальное значение не должно равняться максимальному!');
         }
         if (inputStartValue < 0) {
-            setError('Значение должно быть больше 0');
+            setError('Значение должно быть больше 0!');
         }
         if (inputMaxValue < 0) {
-            setError('Значение должно быть больше 0');
+            setError('Значение должно быть больше 0!');
         }
     },[inputStartValue, inputMaxValue]);
 
     const pushValue = () => {
 
         if (inputStartValue > inputMaxValue) {
-            setError('Начальное значение должно быть меньше максимального');
+            setError('Начальное значение должно быть меньше максимального!');
         } else {
             // setDisableInc(false);
             // setDisableReset(false);

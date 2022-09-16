@@ -24,6 +24,7 @@ export const DisplayCounter: React.FC<DisplayCounterPropsType> = (props) => {
     return (
         <div className={stylesMain.displayCounter}>
             <CounterMonitor counter={props.counter}
+                            startValue={props.startValue}
                             maxValue={props.maxValue}
                             error={props.error}
                             setError={props.setError}
