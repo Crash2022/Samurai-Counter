@@ -5,15 +5,10 @@ import {DisplayCounter} from "../DisplayCounter/DisplayCounter";
 
 export const Counter = () => {
 
-    //const START_VALUE = inputStartValue;
-    //const MAX_VALUE = inputMaxValue;
-
     const [inputStartValue, setInputStartValue] = useState<number>(0);
     const [inputMaxValue, setInputMaxValue] = useState<number>(0);
 
     const [counter, setCounter] = useState<number>(0);
-    // const [disableInc, setDisableInc] = useState<boolean>(true);
-    // const [disableReset, setDisableReset] = useState<boolean>(true);
     const [isSetting, setIsSetting] = useState<boolean>(true);
 
     /*type MessageInfo = {
@@ -25,13 +20,14 @@ export const Counter = () => {
 
     const [error, setError] = useState<string | null>('');
 
+    const START_MESSAGE = 'Введите значения и нажмите кнопку установить';
+
     useEffect(() => {
         if (inputStartValue > inputMaxValue) {
             setError('Начальное значение должно быть меньше максимального!');
             //setError(text:'Начальное значение должно быть меньше максимального!', isError: true);
-            //setDisableReset(true);
         } else {
-            setError('Введите значения и нажмите кнопку установить');
+            setError(`${START_MESSAGE}`);
         }
         if (inputStartValue === inputMaxValue) {
             setError('Начальное значение не должно равняться максимальному!');
@@ -49,8 +45,6 @@ export const Counter = () => {
         if (inputStartValue > inputMaxValue) {
             setError('Начальное значение должно быть меньше максимального!');
         } else {
-            // setDisableInc(false);
-            // setDisableReset(false);
             setIsSetting(false);
             setCounter(inputStartValue);
             setInputStartValue(inputStartValue);
@@ -60,19 +54,11 @@ export const Counter = () => {
     }
 
     const increaseCounter = () => {
-        // if (inputStartValue < inputMaxValue) {
             let newCount = counter + 1;
             setCounter(newCount);
-        // } else {
-        //     setDisableReset(true);
-        // }
     }
 
     const resetCounter = () => {
-        if (counter === inputStartValue) {
-            // setDisableReset(true);
-        }
-        // setDisableInc(false);
         setCounter(inputStartValue);
     }
 
@@ -122,10 +108,7 @@ export const Counter = () => {
                             error={error}
                             setError={setError}
                             isSetting={isSetting}
-                            // disableInc={disableInc}
-                            // setDisableInc={setDisableInc}
-                            // disableReset={disableReset}
-                            // setDisableReset={setDisableReset}
+                            startMessage={START_MESSAGE}
             />
         </div>
     );

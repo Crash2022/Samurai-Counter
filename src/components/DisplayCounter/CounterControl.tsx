@@ -10,25 +10,15 @@ type CounterControlPropsType = {
     startValue: number
     maxValue: number
     isSetting:boolean
-//     disableInc: boolean
-//     setDisableInc: (buttonValue: boolean) => void
-//     disableReset: boolean
-//     setDisableReset: (buttonValue: boolean) => void
 }
 
 export const CounterControl: React.FC<CounterControlPropsType> = (props) => {
 
     const onClickHandlerStart = () => {
-        // if (props.counter === props.maxValue) {
-        //     props.setDisableInc(true);
-        // }
         props.increase();
     }
 
     const onClickHandlerReset = () => {
-        // if (props.counter === props.startValue) {
-        //     props.setDisableInc(true);
-        // }
         props.reset();
     }
 
