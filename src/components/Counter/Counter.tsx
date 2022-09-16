@@ -21,11 +21,14 @@ export const Counter = () => {
         isError: boolean
     }*/
 
+    //const [error, setError] = useState<MessageInfo> | null>(null);
+
     const [error, setError] = useState<string | null>('');
 
     useEffect(() => {
         if (inputStartValue > inputMaxValue) {
             setError('Начальное значение должно быть меньше максимального!');
+            //setError(text:'Начальное значение должно быть меньше максимального!', isError: true);
             //setDisableReset(true);
         } else {
             setError('Введите значения и нажмите кнопку установить');
