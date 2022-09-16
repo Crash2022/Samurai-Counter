@@ -1,5 +1,5 @@
 import React, {ChangeEvent} from 'react';
-import '../../App.css';
+import '../../../App.css';
 import stylesSet from './SettingsCounter.module.css'
 
 export type MonitorSetItemMaxPropsType = {

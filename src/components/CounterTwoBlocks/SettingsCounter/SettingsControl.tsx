@@ -1,8 +1,8 @@
 import React from 'react';
-import '../../App.css';
+import '../../../App.css';
 import styles from '../DisplayCounter/DisplayCounter.module.css'
 import stylesSet from './SettingsCounter.module.css'
-import {Button} from "../../UI/Button";
+import {Button} from "../../../UI/Button";
 
 export type SettingsControlPropsType = {
     pushValue: () => void

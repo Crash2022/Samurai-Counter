@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../App.css';
+import '../../../App.css';
 import stylesMain from '../Counter/Counter.module.css'
 import {CounterMonitor} from "./CounterMonitor";
 import {CounterControl} from "./CounterControl";

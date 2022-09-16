@@ -1,9 +1,9 @@
 import React, {ChangeEvent} from 'react';
-import '../../App.css';
+import '../../../App.css';
 import stylesMain from '../Counter/Counter.module.css'
 import stylesSet from "./SettingsCounter.module.css";
 import stylesDisplay from "../DisplayCounter/DisplayCounter.module.css";
-import {Button} from "../../UI/Button";
+import {Button} from "../../../UI/Button";
 
 export type SettingsCounterPropsType = {
     counter: number
