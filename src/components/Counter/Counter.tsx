@@ -16,6 +16,11 @@ export const Counter = () => {
     // const [disableReset, setDisableReset] = useState<boolean>(true);
     const [isSetting, setIsSetting] = useState<boolean>(true);
 
+    /*type MessageInfo = {
+        text: string
+        isError: boolean
+    }*/
+
     const [error, setError] = useState<string | null>('');
 
     useEffect(() => {

@@ -13,9 +13,22 @@ type CounterMonitorPropsType = {
 
 export const CounterMonitor: React.FC<CounterMonitorPropsType> = (props) => {
 
-    let counterMonitorStopStyle = `${props.counter === props.maxValue && stylesDisplay.counterMonitorStop}`;
-    let startValueMaxStopStyle = `${props.error && stylesMain.counterMonitorStopError}`;
-    let startValueTitleStyle = `${props.error === 'Введите значения и нажмите кнопку установить' && stylesMain.counterMonitorStartTitle}`;
+    const isInfo = props.error === 'Введите значения и нажмите кнопку установить';
+
+    let counterMonitorStopStyle = `${props.counter === props.maxValue ? stylesDisplay.counterMonitorStop : ''}`;
+    let startValueMaxStopStyle = `${props.error && !isInfo ? stylesMain.counterMonitorStopError : ''}`;
+    let startValueTitleStyle = `${ isInfo ? stylesMain.counterMonitorStartTitle : '' }`;
+
+    /*const getInfoMessage = () => {
+        if (props.error) {
+            return props.error
+        }
+        if (isInfo) {
+            //props.info
+           return  props.error
+        }
+        return props.counter
+    }*/
 
     return (
         <div className={`
