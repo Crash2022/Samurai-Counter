@@ -25,6 +25,15 @@ export const Counter = () => {
         } else {
             setError('Введите значения и нажмите кнопку установить');
         }
+        if (inputStartValue === inputMaxValue) {
+            setError('Начальное значение не должно равняться максимальному');
+        }
+        if (inputStartValue < 0) {
+            setError('Значение должно быть больше 0');
+        }
+        if (inputMaxValue < 0) {
+            setError('Значение должно быть больше 0');
+        }
     },[inputStartValue, inputMaxValue]);
 
     const pushValue = () => {
@@ -63,7 +72,7 @@ export const Counter = () => {
 
     // важен порядок использования useEffect
 
-    /*useEffect(() => {
+    useEffect(() => {
         let localValueMax = localStorage.getItem('inputMaxValue')
         if (localValueMax) {
             let newLocalValueMax = JSON.parse(localValueMax);
@@ -80,7 +89,7 @@ export const Counter = () => {
     useEffect(() => {
         localStorage.setItem('inputMaxValue', JSON.stringify(inputMaxValue));
         localStorage.setItem('inputStartValue', JSON.stringify(inputStartValue));
-    }, [inputStartValue, inputMaxValue])*/
+    }, [inputStartValue, inputMaxValue])
 
     /*--------------------------------------------*/
 
