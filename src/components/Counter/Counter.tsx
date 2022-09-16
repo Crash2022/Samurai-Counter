@@ -16,14 +16,14 @@ export const Counter = () => {
     // const [disableReset, setDisableReset] = useState<boolean>(true);
     const [isSetting, setIsSetting] = useState<boolean>(true);
 
-    const [error, setError] = useState<string | null>(null);
+    const [error, setError] = useState<string | null>('');
 
     useEffect(() => {
         if (inputStartValue > inputMaxValue) {
             setError('Начальное значение должно быть меньше максимального');
             //setDisableReset(true);
         } else {
-            setError('');
+            setError('Введите значения и нажмите кнопку установить');
         }
     },[inputStartValue, inputMaxValue]);
 
@@ -61,7 +61,9 @@ export const Counter = () => {
 
     /*--------------------------------------------*/
 
-    useEffect(() => {
+    // важен порядок использования useEffect
+
+    /*useEffect(() => {
         let localValueMax = localStorage.getItem('inputMaxValue')
         if (localValueMax) {
             let newLocalValueMax = JSON.parse(localValueMax);
@@ -78,7 +80,7 @@ export const Counter = () => {
     useEffect(() => {
         localStorage.setItem('inputMaxValue', JSON.stringify(inputMaxValue));
         localStorage.setItem('inputStartValue', JSON.stringify(inputStartValue));
-    }, [inputStartValue, inputMaxValue])
+    }, [inputStartValue, inputMaxValue])*/
 
     /*--------------------------------------------*/
 

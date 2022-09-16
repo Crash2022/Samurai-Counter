@@ -54,7 +54,7 @@ export const SettingsCounter: React.FC<SettingsCounterPropsType> = (props) => {
                             <input type="number"
                                    step={1}
                                    //min={0}
-                                   placeholder={'Введите число'}
+                                   //placeholder={'Введите число'}
                                    value={props.maxValue}
                                    onChange={onChangeClickHandlerMax}
                             />
@@ -68,7 +68,7 @@ export const SettingsCounter: React.FC<SettingsCounterPropsType> = (props) => {
                             <input type="number"
                                    step={1}
                                    //min={0}
-                                   placeholder={'Введите число'}
+                                   //placeholder={'Введите число'}
                                    value={props.startValue}
                                    onChange={onChangeClickHandlerStart}
                             />
