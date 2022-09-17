@@ -13,7 +13,6 @@ export type SettingsCounterPropsType = {
     setInputMaxValue: (startValue: number) => void
     pushValue: () => void
     error: string | null
-    setError: (errorValue: string) => void
     isSetting: boolean
     setIsSetting: (isSetting: boolean) => void
 }

@@ -22,12 +22,12 @@ export const CounterTwoInOne = () => {
     //const MESSAGE_START_NOT_MAX = 'Начальное значение не должно равняться максимальному!';
 
     useEffect(() => {
-        /* if (inputStartValue > inputMaxValue) {
-             setError(`${MESSAGE_START_LESS_MAX}`);
-             //setError(text:'Начальное значение должно быть меньше максимального!', isError: true);
-         } else {*/
-        setError(`${MESSAGE_START_NULL}`);
-        //}
+        if (inputStartValue > inputMaxValue) {
+            setError(`${MESSAGE_START_LESS_MAX}`);
+            //setError(text:'Начальное значение должно быть меньше максимального!', isError: true);
+        } else {
+            setError(`${MESSAGE_START_NULL}`);
+        }
         /*if (inputStartValue === inputMaxValue) {
             setError(`${MESSAGE_START_NOT_MAX}`);
         }
@@ -42,7 +42,7 @@ export const CounterTwoInOne = () => {
     const pushValue = () => {
 
         if (inputStartValue > inputMaxValue) {
-            setError('Начальное значение должно быть меньше максимального!');
+            setError(`${MESSAGE_START_LESS_MAX}`);
         } else {
             setIsSetting(false);
             setCounter(inputStartValue);
@@ -83,10 +83,10 @@ export const CounterTwoInOne = () => {
             setInputStartValue(newLocalValueStart2);
         }
 
-        /*let localValueSetButton2 = localStorage.getItem('isSetting2')
+        let localValueSetButton2 = localStorage.getItem('isSetting2')
         if (localValueSetButton2) {
             let newLocalValueSetButton2 = JSON.parse(localValueSetButton2);
-            setInputStartValue(newLocalValueSetButton2);
+            setIsSetting(newLocalValueSetButton2);
         }
 
         let localCounterValue2 = localStorage.getItem('counter2')
@@ -99,16 +99,23 @@ export const CounterTwoInOne = () => {
         if (localErrorValue2) {
             let newLocalErrorValue2 = JSON.parse(localErrorValue2);
             setError(newLocalErrorValue2);
-        }*/
+        }
+
+        let localValueSettingsButton2 = localStorage.getItem('settingsOn2')
+        if (localValueSettingsButton2) {
+            let newLocalValueSettingsButton2 = JSON.parse(localValueSettingsButton2);
+            setSettingsOn(newLocalValueSettingsButton2);
+        }
     }, [])
 
     useEffect(() => {
         localStorage.setItem('inputMaxValue2', JSON.stringify(inputMaxValue));
         localStorage.setItem('inputStartValue2', JSON.stringify(inputStartValue));
-        /*localStorage.setItem('isSetting2', JSON.stringify(isSetting));
+        localStorage.setItem('isSetting2', JSON.stringify(isSetting));
         localStorage.setItem('counter2', JSON.stringify(counter));
-        localStorage.setItem('error2', JSON.stringify(error));*/
-    }, [inputStartValue, inputMaxValue, isSetting, counter, error])
+        localStorage.setItem('error2', JSON.stringify(error));
+        localStorage.setItem('settingsOn2', JSON.stringify(settingsOn));
+    }, [inputStartValue, inputMaxValue, isSetting, counter, error, settingsOn])
 
     /*--------------------------------------------*/
 
@@ -123,7 +130,6 @@ export const CounterTwoInOne = () => {
                                        setInputMaxValue={setInputMaxValue}
                                        pushValue={pushValue}
                                        error={error}
-                                       setError={setError}
                                        isSetting={isSetting}
                                        setIsSetting={setIsSetting}
                     />
@@ -136,7 +142,6 @@ export const CounterTwoInOne = () => {
                                       increase={increaseCounter}
                                       reset={resetCounter}
                                       error={error}
-                                      setError={setError}
                                       isSetting={isSetting}
                                       messageStart={MESSAGE_START}
                                       setSettingsOn={onClickHandlerChangeSettingsOn}
