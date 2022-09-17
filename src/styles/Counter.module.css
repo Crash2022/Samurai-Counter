@@ -1,7 +1,7 @@
 .displayCounter {
     border: 3px solid green;
     width: 500px;
-    margin: 200px 20px;
+    margin: 80px 20px;
     padding: 30px;
     border-radius: 10px;
     background-color: seashell;
@@ -9,7 +9,7 @@
 .displayCounterV2 {
     border: 3px solid green;
     width: 700px;
-    margin: 200px 20px;
+    margin: 80px 20px;
     padding: 30px;
     border-radius: 10px;
     background-color: seashell;

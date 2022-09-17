@@ -14,7 +14,7 @@ export const App = () => {
     return (
         <div className="App">
             <div className="toggleCounterButton">
-                <button onClick={onClickHandlerChangeCounter}>Сменить тип счётчика</button>
+                <button onClick={onClickHandlerChangeCounter}>Сменить вид счётчика</button>
             </div>
             <div className="wrapper">
                 { changeCounter ? <CounterTwoBlocks /> : <CounterTwoInOne /> }

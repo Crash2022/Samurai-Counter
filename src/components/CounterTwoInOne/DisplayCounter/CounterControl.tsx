@@ -10,6 +10,7 @@ type CounterControlPropsType = {
     startValue: number
     maxValue: number
     isSetting: boolean
+    settingsOn: boolean
     setSettingsOn: () => void
 }
 

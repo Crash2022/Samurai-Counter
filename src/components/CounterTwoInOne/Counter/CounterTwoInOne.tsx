@@ -13,7 +13,7 @@ export const CounterTwoInOne = () => {
 
     const [error, setError] = useState<string | null>('');
 
-    const [settingsOn, setSettingsOn] = useState<boolean>(true);
+    const [settingsOn, setSettingsOn] = useState<boolean>(false);
 
     const START_MESSAGE = 'Зайдите в настройки и введите значения';
 
@@ -39,12 +39,12 @@ export const CounterTwoInOne = () => {
         if (inputStartValue > inputMaxValue) {
             setError('Начальное значение должно быть меньше максимального!');
         } else {
-            setSettingsOn(!settingsOn);
             setIsSetting(false);
             setCounter(inputStartValue);
             setInputStartValue(inputStartValue);
             setInputMaxValue(inputMaxValue);
             setError('');
+            setSettingsOn(!settingsOn);
         }
     }
 
@@ -57,7 +57,7 @@ export const CounterTwoInOne = () => {
         setCounter(inputStartValue);
     }
 
-    const changeSettingsOn = () => {
+    const onClickHandlerChangeSettingsOn = () => {
         setSettingsOn(!settingsOn);
     }
 
@@ -65,7 +65,7 @@ export const CounterTwoInOne = () => {
 
     // важен порядок использования useEffect
 
-    /*useEffect(() => {
+    useEffect(() => {
         let localValueMax = localStorage.getItem('inputMaxValue')
         if (localValueMax) {
             let newLocalValueMax = JSON.parse(localValueMax);
@@ -82,7 +82,7 @@ export const CounterTwoInOne = () => {
     useEffect(() => {
         localStorage.setItem('inputMaxValue', JSON.stringify(inputMaxValue));
         localStorage.setItem('inputStartValue', JSON.stringify(inputStartValue));
-    }, [inputStartValue, inputMaxValue])*/
+    }, [inputStartValue, inputMaxValue])
 
     /*--------------------------------------------*/
 
@@ -90,18 +90,7 @@ export const CounterTwoInOne = () => {
         <div className="counterWrapper">
             {
                 settingsOn
-                    ? <DisplayCounter counter={counter}
-                                      startValue={inputStartValue}
-                                      maxValue={inputMaxValue}
-                                      increase={increaseCounter}
-                                      reset={resetCounter}
-                                      error={error}
-                                      setError={setError}
-                                      isSetting={isSetting}
-                                      startMessage={START_MESSAGE}
-                                      setSettingsOn={changeSettingsOn}
-                    />
-                    : <SettingsCounter counter={counter}
+                    ? <SettingsCounter counter={counter}
                                        startValue={inputStartValue}
                                        setInputStartValue={setInputStartValue}
                                        maxValue={inputMaxValue}
@@ -110,7 +99,22 @@ export const CounterTwoInOne = () => {
                                        error={error}
                                        setError={setError}
                                        isSetting={isSetting}
-                                       setIsSetting={changeSettingsOn}
+                                       setIsSetting={setIsSetting}
+                    />
+                    : <DisplayCounter counter={counter}
+                                      startValue={inputStartValue}
+                                      setInputStartValue={setInputStartValue}
+                                      maxValue={inputMaxValue}
+                                      setInputMaxValue={setInputMaxValue}
+                                      pushValue={pushValue}
+                                      increase={increaseCounter}
+                                      reset={resetCounter}
+                                      error={error}
+                                      setError={setError}
+                                      isSetting={isSetting}
+                                      startMessage={START_MESSAGE}
+                                      settingsOn={settingsOn}
+                                      setSettingsOn={onClickHandlerChangeSettingsOn}
                     />
             }
         </div>
