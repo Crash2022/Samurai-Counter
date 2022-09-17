@@ -40,16 +40,16 @@ export const CounterTwoInOne = () => {
 
     const pushValue = () => {
 
-        /*if (inputStartValue > inputMaxValue) {
+        if (inputStartValue > inputMaxValue) {
             setError('Начальное значение должно быть меньше максимального!');
-        } else {*/
+        } else {
             setIsSetting(false);
             setCounter(inputStartValue);
             setInputStartValue(inputStartValue);
             setInputMaxValue(inputMaxValue);
             setError('');
             setSettingsOn(!settingsOn);
-        //}
+        }
     }
 
     const increaseCounter = () => {

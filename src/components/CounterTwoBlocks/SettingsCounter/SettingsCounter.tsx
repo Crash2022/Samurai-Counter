@@ -37,6 +37,7 @@ export const SettingsCounter: React.FC<SettingsCounterPropsType> = (props) => {
     let inputErrorStyle = `${props.startValue === props.maxValue && stylesSet.settings}`;
     let inputErrorMaxStyle = `${props.maxValue < 0 && stylesSet.settings}`;
     let inputErrorStartStyle = `${props.startValue < 0 && stylesSet.settings}`;
+    let inputErrorStarBiggerMaxStyle = `${props.startValue > props.maxValue && stylesSet.settings}`;
 
     return (
         <div className={stylesMain.displayCounter}>
@@ -76,7 +77,7 @@ export const SettingsCounter: React.FC<SettingsCounterPropsType> = (props) => {
                                    //placeholder={'Введите число'}
                                    value={props.startValue}
                                    onChange={onChangeClickHandlerStart}
-                                   className={`${inputErrorStyle} ${inputErrorStartStyle}`}
+                                   className={`${inputErrorStyle} ${inputErrorStartStyle} ${inputErrorStarBiggerMaxStyle}`}
                             />
                         </div>
                     </div>
