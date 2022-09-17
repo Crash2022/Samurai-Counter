@@ -1,8 +1,6 @@
 import React from 'react';
 import '../../../App.css';
 import stylesMain from '../../../styles/Counter.module.css'
-//import {CounterMonitor} from "./CounterMonitor";
-//import {CounterControl} from "./CounterControl";
 import stylesDisplay from "../../../styles/DisplayCounter.module.css";
 import {Button} from "../../../UI/Button";
 
@@ -75,20 +73,6 @@ export const DisplayCounter: React.FC<DisplayCounterPropsType> = (props) => {
                 </div>
             </div>
 
-            {/*<CounterMonitor counter={props.counter}
-                            startValue={props.startValue}
-                            maxValue={props.maxValue}
-                            error={props.error}
-                            messageStart={props.messageStart}
-            />
-            <CounterControl counter={props.counter}
-                            increase={props.increase}
-                            reset={props.reset}
-                            startValue={props.startValue}
-                            maxValue={props.maxValue}
-                            isSetting={props.isSetting}
-                            setSettingsOn={props.setSettingsOn}
-            />*/}
         </div>
     );
 }
