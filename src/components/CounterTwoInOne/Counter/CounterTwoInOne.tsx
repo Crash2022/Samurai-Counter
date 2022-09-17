@@ -15,37 +15,41 @@ export const CounterTwoInOne = () => {
 
     const [settingsOn, setSettingsOn] = useState<boolean>(false);
 
-    const START_MESSAGE = 'Зайдите в настройки и введите значения';
+    const MESSAGE_START = 'Зайдите в настройки и установите значения';
+    //const MESSAGE_ZERO = 'Значение должно быть больше 0!';
+    const MESSAGE_START_LESS_MAX = 'Начальное значение должно быть меньше максимального!';
+    //const MESSAGE_START_NOT_MAX = 'Начальное значение не должно равняться максимальному!';
 
     useEffect(() => {
         if (inputStartValue > inputMaxValue) {
-            setError('Начальное значение должно быть меньше максимального!');
+            setError(`${MESSAGE_START_LESS_MAX}`);
+            //setError(text:'Начальное значение должно быть меньше максимального!', isError: true);
         } else {
-            setError(`${START_MESSAGE}`);
+            setError(`${MESSAGE_START}`);
         }
-        if (inputStartValue === inputMaxValue) {
-            setError('Начальное значение не должно равняться максимальному!');
+        /*if (inputStartValue === inputMaxValue) {
+            setError(`${MESSAGE_START_NOT_MAX}`);
         }
         if (inputStartValue < 0) {
-            setError('Значение должно быть больше 0!');
+            setError(`${MESSAGE_ZERO}`);
         }
         if (inputMaxValue < 0) {
-            setError('Значение должно быть больше 0!');
-        }
+            setError(`${MESSAGE_ZERO}`);
+        }*/
     }, [inputStartValue, inputMaxValue]);
 
     const pushValue = () => {
 
-        if (inputStartValue > inputMaxValue) {
+        /*if (inputStartValue > inputMaxValue) {
             setError('Начальное значение должно быть меньше максимального!');
-        } else {
+        } else {*/
             setIsSetting(false);
             setCounter(inputStartValue);
             setInputStartValue(inputStartValue);
             setInputMaxValue(inputMaxValue);
             setError('');
             setSettingsOn(!settingsOn);
-        }
+        //}
     }
 
     const increaseCounter = () => {
@@ -112,8 +116,7 @@ export const CounterTwoInOne = () => {
                                       error={error}
                                       setError={setError}
                                       isSetting={isSetting}
-                                      startMessage={START_MESSAGE}
-                                      settingsOn={settingsOn}
+                                      messageStart={MESSAGE_START}
                                       setSettingsOn={onClickHandlerChangeSettingsOn}
                     />
             }

@@ -20,30 +20,33 @@ export const CounterTwoBlocks = () => {
 
     const [error, setError] = useState<string | null>('');
 
-    const START_MESSAGE = 'Введите значения и нажмите кнопку установить';
+    const MESSAGE_START = 'Введите значения и нажмите кнопку установить';
+    const MESSAGE_ZERO = 'Значение должно быть больше 0!';
+    const MESSAGE_START_LESS_MAX = 'Начальное значение должно быть меньше максимального!';
+    const MESSAGE_START_NOT_MAX = 'Начальное значение не должно равняться максимальному!';
 
     useEffect(() => {
         if (inputStartValue > inputMaxValue) {
-            setError('Начальное значение должно быть меньше максимального!');
+            setError(`${MESSAGE_START_LESS_MAX}`);
             //setError(text:'Начальное значение должно быть меньше максимального!', isError: true);
         } else {
-            setError(`${START_MESSAGE}`);
+            setError(`${MESSAGE_START}`);
         }
         if (inputStartValue === inputMaxValue) {
-            setError('Начальное значение не должно равняться максимальному!');
+            setError(`${MESSAGE_START_NOT_MAX}`);
         }
         if (inputStartValue < 0) {
-            setError('Значение должно быть больше 0!');
+            setError(`${MESSAGE_ZERO}`);
         }
         if (inputMaxValue < 0) {
-            setError('Значение должно быть больше 0!');
+            setError(`${MESSAGE_ZERO}`);
         }
     },[inputStartValue, inputMaxValue]);
 
     const pushValue = () => {
 
         if (inputStartValue > inputMaxValue) {
-            setError('Начальное значение должно быть меньше максимального!');
+            setError(`${MESSAGE_START_LESS_MAX}`);
         } else {
             setIsSetting(false);
             setCounter(inputStartValue);
@@ -108,7 +111,7 @@ export const CounterTwoBlocks = () => {
                             error={error}
                             setError={setError}
                             isSetting={isSetting}
-                            startMessage={START_MESSAGE}
+                            messageStart={MESSAGE_START}
             />
         </div>
     );
