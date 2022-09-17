@@ -8,7 +8,6 @@ type CounterMonitorPropsType = {
     startValue: number
     maxValue: number
     error: string | null
-    setError: (errorValue: string) => void
     messageStart: string
 }
 

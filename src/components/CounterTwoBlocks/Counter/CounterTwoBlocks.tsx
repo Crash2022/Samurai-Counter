@@ -21,6 +21,7 @@ export const CounterTwoBlocks = () => {
     const [error, setError] = useState<string | null>('');
 
     const MESSAGE_START = 'Введите значения и нажмите кнопку установить';
+    const MESSAGE_START_NULL = '';
     const MESSAGE_ZERO = 'Значение должно быть больше 0!';
     const MESSAGE_START_LESS_MAX = 'Начальное значение должно быть меньше максимального!';
     const MESSAGE_START_NOT_MAX = 'Начальное значение не должно равняться максимальному!';
@@ -30,7 +31,7 @@ export const CounterTwoBlocks = () => {
             setError(`${MESSAGE_START_LESS_MAX}`);
             //setError(text:'Начальное значение должно быть меньше максимального!', isError: true);
         } else {
-            setError(`${MESSAGE_START}`);
+            setError(`${MESSAGE_START_NULL}`);
         }
         if (inputStartValue === inputMaxValue) {
             setError(`${MESSAGE_START_NOT_MAX}`);
@@ -81,12 +82,34 @@ export const CounterTwoBlocks = () => {
             let newLocalValueStart = JSON.parse(localValueStart);
             setInputStartValue(newLocalValueStart);
         }
+
+        let localValueSetButton = localStorage.getItem('isSetting')
+        if (localValueSetButton) {
+            let newLocalValueSetButton = JSON.parse(localValueSetButton);
+            setIsSetting(newLocalValueSetButton);
+        }
+
+        let localCounterValue = localStorage.getItem('counter')
+        if (localCounterValue) {
+            let newLocalCounterValue = JSON.parse(localCounterValue);
+            setCounter(newLocalCounterValue);
+        }
+
+        let localErrorValue = localStorage.getItem('error')
+        console.log('localErrorValue', localErrorValue)
+        if (localErrorValue) {
+            let newLocalErrorValue = JSON.parse(localErrorValue);
+            setError(newLocalErrorValue);
+        }
     }, [])
 
     useEffect(() => {
         localStorage.setItem('inputMaxValue', JSON.stringify(inputMaxValue));
         localStorage.setItem('inputStartValue', JSON.stringify(inputStartValue));
-    }, [inputStartValue, inputMaxValue])
+        localStorage.setItem('isSetting', JSON.stringify(isSetting));
+        localStorage.setItem('counter', JSON.stringify(counter));
+        localStorage.setItem('error', JSON.stringify(error));
+    }, [inputStartValue, inputMaxValue, isSetting, counter, error])
 
     /*--------------------------------------------*/
 
@@ -109,7 +132,6 @@ export const CounterTwoBlocks = () => {
                             increase={increaseCounter}
                             reset={resetCounter}
                             error={error}
-                            setError={setError}
                             isSetting={isSetting}
                             messageStart={MESSAGE_START}
             />

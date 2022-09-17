@@ -77,7 +77,11 @@ export const SettingsCounter: React.FC<SettingsCounterPropsType> = (props) => {
                                    //placeholder={'Введите число'}
                                    value={props.startValue}
                                    onChange={onChangeClickHandlerStart}
-                                   className={`${inputErrorStyle} ${inputErrorStartStyle} ${inputErrorStarBiggerMaxStyle}`}
+                                   className={`
+                                        ${inputErrorStyle} 
+                                        ${inputErrorStartStyle} 
+                                        ${inputErrorStarBiggerMaxStyle}
+                                   `}
                             />
                         </div>
                     </div>

@@ -16,17 +16,18 @@ export const CounterTwoInOne = () => {
     const [settingsOn, setSettingsOn] = useState<boolean>(false);
 
     const MESSAGE_START = 'Зайдите в настройки и установите значения';
+    const MESSAGE_START_NULL = '';
     //const MESSAGE_ZERO = 'Значение должно быть больше 0!';
     const MESSAGE_START_LESS_MAX = 'Начальное значение должно быть меньше максимального!';
     //const MESSAGE_START_NOT_MAX = 'Начальное значение не должно равняться максимальному!';
 
     useEffect(() => {
-        if (inputStartValue > inputMaxValue) {
-            setError(`${MESSAGE_START_LESS_MAX}`);
-            //setError(text:'Начальное значение должно быть меньше максимального!', isError: true);
-        } else {
-            setError(`${MESSAGE_START}`);
-        }
+        /* if (inputStartValue > inputMaxValue) {
+             setError(`${MESSAGE_START_LESS_MAX}`);
+             //setError(text:'Начальное значение должно быть меньше максимального!', isError: true);
+         } else {*/
+        setError(`${MESSAGE_START_NULL}`);
+        //}
         /*if (inputStartValue === inputMaxValue) {
             setError(`${MESSAGE_START_NOT_MAX}`);
         }
@@ -82,7 +83,7 @@ export const CounterTwoInOne = () => {
             setInputStartValue(newLocalValueStart2);
         }
 
-/*        let localValueSetButton2 = localStorage.getItem('isSetting2')
+        /*let localValueSetButton2 = localStorage.getItem('isSetting2')
         if (localValueSetButton2) {
             let newLocalValueSetButton2 = JSON.parse(localValueSetButton2);
             setInputStartValue(newLocalValueSetButton2);
@@ -104,7 +105,7 @@ export const CounterTwoInOne = () => {
     useEffect(() => {
         localStorage.setItem('inputMaxValue2', JSON.stringify(inputMaxValue));
         localStorage.setItem('inputStartValue2', JSON.stringify(inputStartValue));
-/*        localStorage.setItem('isSetting2', JSON.stringify(isSetting));
+        /*localStorage.setItem('isSetting2', JSON.stringify(isSetting));
         localStorage.setItem('counter2', JSON.stringify(counter));
         localStorage.setItem('error2', JSON.stringify(error));*/
     }, [inputStartValue, inputMaxValue, isSetting, counter, error])
