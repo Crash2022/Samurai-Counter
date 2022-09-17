@@ -24,7 +24,6 @@ export const CounterTwoInOne = () => {
     useEffect(() => {
         if (inputStartValue > inputMaxValue) {
             setError(`${MESSAGE_START_LESS_MAX}`);
-            //setError(text:'Начальное значение должно быть меньше максимального!', isError: true);
         } else {
             setError(`${MESSAGE_START_NULL}`);
         }

@@ -11,7 +11,6 @@ export type SettingsControlPropsType = {
 export const SettingsControl: React.FC<SettingsControlPropsType> = (props) => {
 
     const onClickHandlerSet = () => {
-        //console.log('working')
         props.pushValue()
     }
 

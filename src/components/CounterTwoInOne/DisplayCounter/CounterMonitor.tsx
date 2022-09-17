@@ -19,17 +19,6 @@ export const CounterMonitor: React.FC<CounterMonitorPropsType> = (props) => {
     let startValueMaxStopStyle = `${ props.error && !isInfo ? stylesMain.counterMonitorStopError : '' }`;
     let startValueTitleStyle = `${ isInfo ? stylesMain.counterMonitorStartTitle : '' }`;
 
-    /*const getInfoMessage = () => {
-        if (props.error) {
-            return props.error
-        }
-        if (isInfo) {
-            //props.info
-           return  props.error
-        }
-        return props.counter
-    }*/
-
     return (
         <div className={`
                          ${stylesMain.counterMonitor} 

@@ -2,6 +2,7 @@ import React from 'react';
 import '../../../App.css';
 import stylesDisplay from '../../../styles/DisplayCounter.module.css'
 import {Button} from "../../../UI/Button";
+import stylesMain from "../../../styles/Counter.module.css";
 
 type CounterControlPropsType = {
     counter: number
