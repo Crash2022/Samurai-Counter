@@ -27,6 +27,8 @@ export const SettingsControl: React.FC<SettingsControlPropsType> = (props) => {
                             || props.startValue > props.maxValue
                             || props.startValue < 0
                             || props.maxValue < 0
+                            || !Number.isInteger(props.maxValue)
+                            || !Number.isInteger(props.startValue)
                         }
                 />
             </div>

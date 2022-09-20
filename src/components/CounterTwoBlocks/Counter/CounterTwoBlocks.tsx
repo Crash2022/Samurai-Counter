@@ -25,6 +25,7 @@ export const CounterTwoBlocks = () => {
     const MESSAGE_ZERO = 'Значение должно быть больше 0!';
     const MESSAGE_START_LESS_MAX = 'Начальное значение должно быть меньше максимального!';
     const MESSAGE_START_NOT_MAX = 'Начальное значение не должно равняться максимальному!';
+    const MESSAGE_VALUE_NOT_INTEGER = 'Значение должно быть целым числом!';
 
     useEffect(() => {
         if (inputStartValue > inputMaxValue) {
@@ -41,6 +42,12 @@ export const CounterTwoBlocks = () => {
         }
         if (inputMaxValue < 0) {
             setError(`${MESSAGE_ZERO}`);
+        }
+        if (!Number.isInteger(inputMaxValue)) {
+            setError(`${MESSAGE_VALUE_NOT_INTEGER}`);
+        }
+        if (!Number.isInteger(inputStartValue)) {
+            setError(`${MESSAGE_VALUE_NOT_INTEGER}`);
         }
     },[inputStartValue, inputMaxValue]);
 

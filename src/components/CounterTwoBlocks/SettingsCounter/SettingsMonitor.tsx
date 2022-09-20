@@ -28,6 +28,8 @@ export const SettingsMonitor: React.FC<SettingsMonitorPropsType> = (props) => {
     let inputErrorMaxStyle = `${props.maxValue < 0 && stylesSet.settings}`;
     let inputErrorStartStyle = `${props.startValue < 0 && stylesSet.settings}`;
     let inputErrorStarBiggerMaxStyle = `${props.startValue > props.maxValue && stylesSet.settings}`;
+    let inputErrorMaxNotIntegerStyle = `${!Number.isInteger(props.maxValue) && stylesSet.settings}`;
+    let inputErrorStartNotIntegerStyle = `${!Number.isInteger(props.startValue) && stylesSet.settings}`;
 
     return (
         <div className={stylesMain.counterMonitor}>
@@ -44,7 +46,11 @@ export const SettingsMonitor: React.FC<SettingsMonitorPropsType> = (props) => {
                             //placeholder={'Введите число'}
                                value={props.maxValue}
                                onChange={onChangeClickHandlerMax}
-                               className={`${inputErrorStyle} ${inputErrorMaxStyle}`}
+                               className={`
+                                        ${inputErrorStyle} 
+                                        ${inputErrorMaxStyle} 
+                                        ${inputErrorMaxNotIntegerStyle}
+                               `}
                         />
                     </div>
                 </div>
@@ -64,7 +70,8 @@ export const SettingsMonitor: React.FC<SettingsMonitorPropsType> = (props) => {
                                         ${inputErrorStyle} 
                                         ${inputErrorStartStyle} 
                                         ${inputErrorStarBiggerMaxStyle}
-                                   `}
+                                        ${inputErrorStartNotIntegerStyle}
+                               `}
                         />
                     </div>
                 </div>
