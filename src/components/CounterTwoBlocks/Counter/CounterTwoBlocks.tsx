@@ -49,7 +49,7 @@ export const CounterTwoBlocks = () => {
         if (!Number.isInteger(inputStartValue)) {
             setError(`${MESSAGE_VALUE_NOT_INTEGER}`);
         }
-    },[inputStartValue, inputMaxValue]);
+    }, [inputStartValue, inputMaxValue]);
 
     const pushValue = () => {
 
@@ -65,8 +65,8 @@ export const CounterTwoBlocks = () => {
     }
 
     const increaseCounter = () => {
-            let newCount = counter + 1;
-            setCounter(newCount);
+        let newCount = counter + 1;
+        setCounter(newCount);
     }
 
     const resetCounter = () => {
