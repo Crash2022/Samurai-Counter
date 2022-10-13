@@ -2,20 +2,30 @@ import React, {useEffect, useReducer, useState} from 'react';
 import '../../../App.css';
 import {SettingsCounter} from "../SettingsCounter/SettingsCounter";
 import {DisplayCounter} from "../DisplayCounter/DisplayCounter";
-import {counterReducer, increaseCounterAC, initialState} from "../../../redux/counter-reducer";
+import {
+    counterReducer,
+    increaseCounterAC,
+    initialState,
+    setMaxValueAC,
+    setStartValueAC
+} from "../../../redux/counter-reducer";
 import {setCounterAC} from "../../../redux/counter-reducer";
 
 export const CounterRedux = () => {
 
-    const [inputStartValue, setInputStartValue] = useState<number>(0);
-    const [inputMaxValue, setInputMaxValue] = useState<number>(0);
+    //const [inputMaxValue, setInputMaxValue] = useState<number>(0);
+    const [inputMaxValue, dispatchToMaxValueReducer] = useReducer(counterReducer, initialState);
+
+    //const [inputStartValue, setInputStartValue] = useState<number>(0);
+    const [inputStartValue, dispatchToStartValueReducer] = useReducer(counterReducer, initialState);
 
     //const [counter, setCounter] = useState<number>(0);
     const [counter, dispatchToCounterReducer] = useReducer(counterReducer, initialState);
 
+    //const [isSetting, setIsSetting] = useState<boolean>(true);
     const [isSetting, dispatchToSettingReducer] = useReducer(counterReducer, initialState);
 
-    /*--------------------------------------------*/
+    /*-------------------------------------------------------------------*/
 
     const [error, setError] = useState<string | null>('');
 
@@ -28,7 +38,7 @@ export const CounterRedux = () => {
         MESSAGE_VALUE_NOT_INTEGER: 'Значение должно быть целым числом!'
     }
 
-    /*--------------------------------------------*/
+    /*-------------------------------------------------------------------*/
 
     useEffect(() => {
         if (inputStartValue > inputMaxValue) {
@@ -61,27 +71,32 @@ export const CounterRedux = () => {
             //setIsSetting(false);
             dispatchToSettingReducer(setCounterAC(false));
 
-            setCounter(inputStartValue);
+            //setCounter(inputStartValue);
+            dispatchToCounterReducer(setStartValueAC(0));
 
-            setInputStartValue(inputStartValue);
+            //setInputStartValue(inputStartValue);
+            dispatchToStartValueReducer(setStartValueAC(0))
 
-            setInputMaxValue(inputMaxValue);
+            //setInputMaxValue(inputMaxValue);
+            dispatchToMaxValueReducer(setMaxValueAC(0))
 
             setError('');
         }
     }
 
     const increaseCounter = (counter: number) => {
-        dispatchToCounterReducer(increaseCounterAC(counter))
+        // let newCount = counter + 1;
+        // setCounter(newCount);
+        dispatchToCounterReducer(increaseCounterAC(counter));
     }
 
     const resetCounter = () => {
-        setCounter(inputStartValue);
+        //setCounter(inputStartValue);
+        dispatchToCounterReducer(setStartValueAC(0));
     }
 
-
     const setIsSettingDispatch = (isSetting: boolean) => {
-        dispatchToSettingReducer(setCounterAC(isSetting))
+        dispatchToSettingReducer(setCounterAC(isSetting));
     }
 
     /*--------------------------------------------*/
@@ -135,18 +150,17 @@ export const CounterRedux = () => {
         <div className="App">
             <div className="wrapper">
                 <div className="counterWrapper">
-                    <SettingsCounter counter={counter}
-                                     startValue={inputStartValue}
+                    <SettingsCounter startValue={inputStartValue.startValue}
                                      setInputStartValue={setInputStartValue}
-                                     maxValue={inputMaxValue}
+                                     maxValue={inputMaxValue.maxValue}
                                      setInputMaxValue={setInputMaxValue}
                                      pushValue={pushValue}
                                      isSetting={isSetting.isSetting}
                                      setIsSetting={setIsSettingDispatch}
                     />
-                    <DisplayCounter counter={counter}
-                                    startValue={inputStartValue}
-                                    maxValue={inputMaxValue}
+                    <DisplayCounter counter={counter.counter}
+                                    startValue={inputStartValue.startValue}
+                                    maxValue={inputMaxValue.maxValue}
                                     increase={increaseCounter}
                                     reset={resetCounter}
                                     error={error}

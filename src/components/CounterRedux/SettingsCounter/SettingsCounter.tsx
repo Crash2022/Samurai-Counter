@@ -8,7 +8,6 @@ import stylesDisplay from "../../../styles/DisplayCounter.module.css";
 import {Button} from "../../../UI/Button";
 
 export type SettingsCounterPropsType = {
-    counter: number
     startValue: number
     setInputStartValue: (startValue: number) => void
     maxValue: number
