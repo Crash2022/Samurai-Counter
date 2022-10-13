@@ -1,8 +1,8 @@
 import React, {ChangeEvent} from 'react';
 import '../../../App.css';
 import stylesMain from '../../../styles/Counter.module.css'
-import {SettingsMonitor} from "./SettingsMonitor";
-import {SettingsControl} from "./SettingsControl";
+//import {SettingsMonitor} from "./SettingsMonitor";
+//import {SettingsControl} from "./SettingsControl";
 import stylesSet from "../../../styles/SettingsCounter.module.css";
 import stylesDisplay from "../../../styles/DisplayCounter.module.css";
 import {Button} from "../../../UI/Button";
@@ -14,8 +14,6 @@ export type SettingsCounterPropsType = {
     maxValue: number
     setInputMaxValue: (startValue: number) => void
     pushValue: () => void
-    //error: string | null
-    //setError: (errorValue: string) => void
     isSetting: boolean
     setIsSetting: (isSetting: boolean) => void
 }
@@ -62,7 +60,7 @@ export const SettingsCounter: React.FC<SettingsCounterPropsType> = (props) => {
 
                     <div className={stylesSet.setMonitorValues}>
                         <div className={stylesSet.valueTitle}>
-                            Макс. значение
+                            <span>Макс. значение</span>
                         </div>
                         <div className={stylesSet.valueNumber}>
                             <input type="number"
@@ -82,7 +80,7 @@ export const SettingsCounter: React.FC<SettingsCounterPropsType> = (props) => {
 
                     <div className={stylesSet.setMonitorValues}>
                         <div className={stylesSet.valueTitle}>
-                            Начальное значение
+                            <span>Начальное значение</span>
                         </div>
                         <div className={stylesSet.valueNumber}>
                             <input type="number"

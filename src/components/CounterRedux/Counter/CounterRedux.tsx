@@ -1,24 +1,23 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useReducer, useState} from 'react';
 import '../../../App.css';
 import {SettingsCounter} from "../SettingsCounter/SettingsCounter";
 import {DisplayCounter} from "../DisplayCounter/DisplayCounter";
+import {counterReducer, increaseCounterAC, initialState} from "../../../redux/counter-reducer";
+import {setCounterAC} from "../../../redux/counter-reducer";
 
 export const CounterRedux = () => {
 
     const [inputStartValue, setInputStartValue] = useState<number>(0);
     const [inputMaxValue, setInputMaxValue] = useState<number>(0);
 
-    const [counter, setCounter] = useState<number>(0);
-    const [isSetting, setIsSetting] = useState<boolean>(true);
+    //const [counter, setCounter] = useState<number>(0);
+    const [counter, dispatchToCounterReducer] = useReducer(counterReducer, initialState);
+
+    const [isSetting, dispatchToSettingReducer] = useReducer(counterReducer, initialState);
+
+    /*--------------------------------------------*/
 
     const [error, setError] = useState<string | null>('');
-
-    // const MESSAGE_START = 'Введите значения и нажмите кнопку установить';
-    // const MESSAGE_START_NULL = '';
-    // const MESSAGE_ZERO = 'Значение должно быть больше 0!';
-    // const MESSAGE_START_LESS_MAX = 'Начальное значение должно быть меньше максимального!';
-    // const MESSAGE_START_NOT_MAX = 'Начальное значение не должно равняться максимальному!';
-    // const MESSAGE_VALUE_NOT_INTEGER = 'Значение должно быть целым числом!';
 
     const warningMessages = {
         MESSAGE_START: 'Введите значения и нажмите кнопку установить',
@@ -28,6 +27,8 @@ export const CounterRedux = () => {
         MESSAGE_START_NOT_MAX: 'Начальное значение не должно равняться максимальному!',
         MESSAGE_VALUE_NOT_INTEGER: 'Значение должно быть целым числом!'
     }
+
+    /*--------------------------------------------*/
 
     useEffect(() => {
         if (inputStartValue > inputMaxValue) {
@@ -57,21 +58,30 @@ export const CounterRedux = () => {
         if (inputStartValue > inputMaxValue) {
             setError(warningMessages.MESSAGE_START_LESS_MAX);
         } else {
-            setIsSetting(false);
+            //setIsSetting(false);
+            dispatchToSettingReducer(setCounterAC(false));
+
             setCounter(inputStartValue);
+
             setInputStartValue(inputStartValue);
+
             setInputMaxValue(inputMaxValue);
+
             setError('');
         }
     }
 
-    const increaseCounter = () => {
-        let newCount = counter + 1;
-        setCounter(newCount);
+    const increaseCounter = (counter: number) => {
+        dispatchToCounterReducer(increaseCounterAC(counter))
     }
 
     const resetCounter = () => {
         setCounter(inputStartValue);
+    }
+
+
+    const setIsSettingDispatch = (isSetting: boolean) => {
+        dispatchToSettingReducer(setCounterAC(isSetting))
     }
 
     /*--------------------------------------------*/
@@ -131,10 +141,8 @@ export const CounterRedux = () => {
                                      maxValue={inputMaxValue}
                                      setInputMaxValue={setInputMaxValue}
                                      pushValue={pushValue}
-                                     //error={error}
-                                     //setError={setError}
-                                     isSetting={isSetting}
-                                     setIsSetting={setIsSetting}
+                                     isSetting={isSetting.isSetting}
+                                     setIsSetting={setIsSettingDispatch}
                     />
                     <DisplayCounter counter={counter}
                                     startValue={inputStartValue}
@@ -142,7 +150,7 @@ export const CounterRedux = () => {
                                     increase={increaseCounter}
                                     reset={resetCounter}
                                     error={error}
-                                    isSetting={isSetting}
+                                    isSetting={isSetting.isSetting}
                                     messageStart={warningMessages.MESSAGE_START_LESS_MAX}
                     />
                 </div>
