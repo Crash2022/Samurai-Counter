@@ -68,13 +68,13 @@ export const DisplayCounter: React.FC<DisplayCounterPropsType> = (props) => {
                 <div className={stylesDisplay.increase}>
                     <Button name={'Увеличить'}
                             callback={onClickHandlerStart}
-                            //disabled={props.counter === props.maxValue || props.isSetting}
+                            disabled={props.counter === props.maxValue || props.isSetting}
                     />
                 </div>
                 <div className={stylesDisplay.reset}>
                     <Button name={'Сбросить'}
                             callback={onClickHandlerReset}
-                            //disabled={props.counter === props.startValue || props.isSetting}
+                            disabled={props.counter === props.startValue || props.isSetting}
                     />
                 </div>
             </div>

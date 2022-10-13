@@ -41,7 +41,7 @@ export const CounterRedux = () => {
 
     /*-------------------------------------------------------------------*/
 
-    /*useEffect(() => {
+    useEffect(() => {
         if (inputStartValue.startValue > inputMaxValue.maxValue) {
             setError(warningMessages.MESSAGE_START_LESS_MAX);
         } else {
@@ -62,27 +62,27 @@ export const CounterRedux = () => {
         if (!Number.isInteger(inputStartValue.startValue)) {
             setError(warningMessages.MESSAGE_VALUE_NOT_INTEGER);
         }
-    }, [inputStartValue.startValue, inputMaxValue.maxValue]);*/
+    }, [inputStartValue.startValue, inputMaxValue.maxValue]);
 
     const pushValue = () => {
 
-        /*if (inputStartValue.startValue > inputMaxValue.maxValue) {
+        if (inputStartValue.startValue > inputMaxValue.maxValue) {
             setError(warningMessages.MESSAGE_START_LESS_MAX);
-        } else {*/
+        } else {
             //setIsSetting(false);
             dispatchToSettingReducer(setCounterAC(false)); //done
 
             //setCounter(inputStartValue);
-            dispatchToCounterReducer(setStartValueAC(0));
+            dispatchToCounterReducer(setStartValueAC(counter.startValue));
 
             //setInputStartValue(inputStartValue);
-            dispatchToStartValueReducer(setStartValueAC(0));
+            dispatchToStartValueReducer(setStartValueAC(inputStartValue.startValue));
 
             //setInputMaxValue(inputMaxValue);
-            dispatchToMaxValueReducer(setMaxValueAC(0));
+            dispatchToMaxValueReducer(setMaxValueAC(inputMaxValue.maxValue));
 
             setError('');
-        //}
+        }
     }
 
     const increaseCounter = (counter: number) => {
