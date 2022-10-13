@@ -41,31 +41,31 @@ export const CounterRedux = () => {
     /*-------------------------------------------------------------------*/
 
     useEffect(() => {
-        if (inputStartValue > inputMaxValue) {
+        if (inputStartValue.startValue > inputMaxValue.maxValue) {
             setError(warningMessages.MESSAGE_START_LESS_MAX);
         } else {
             setError(warningMessages.MESSAGE_START_NULL);
         }
-        if (inputStartValue === inputMaxValue) {
+        if (inputStartValue.startValue === inputMaxValue.maxValue) {
             setError(warningMessages.MESSAGE_START_NOT_MAX);
         }
-        if (inputStartValue < 0) {
+        if (inputStartValue.startValue < 0) {
             setError(warningMessages.MESSAGE_ZERO);
         }
-        if (inputMaxValue < 0) {
+        if (inputMaxValue.maxValue < 0) {
             setError(warningMessages.MESSAGE_ZERO);
         }
-        if (!Number.isInteger(inputMaxValue)) {
+        if (!Number.isInteger(inputMaxValue.maxValue)) {
             setError(warningMessages.MESSAGE_VALUE_NOT_INTEGER);
         }
-        if (!Number.isInteger(inputStartValue)) {
+        if (!Number.isInteger(inputStartValue.startValue)) {
             setError(warningMessages.MESSAGE_VALUE_NOT_INTEGER);
         }
-    }, [inputStartValue, inputMaxValue]);
+    }, [inputStartValue.startValue, inputMaxValue.maxValue]);
 
     const pushValue = () => {
 
-        if (inputStartValue > inputMaxValue) {
+        if (inputStartValue.startValue > inputMaxValue.maxValue) {
             setError(warningMessages.MESSAGE_START_LESS_MAX);
         } else {
             //setIsSetting(false);
@@ -75,10 +75,10 @@ export const CounterRedux = () => {
             dispatchToCounterReducer(setStartValueAC(0));
 
             //setInputStartValue(inputStartValue);
-            dispatchToStartValueReducer(setStartValueAC(0))
+            dispatchToStartValueReducer(setStartValueAC(0));
 
             //setInputMaxValue(inputMaxValue);
-            dispatchToMaxValueReducer(setMaxValueAC(0))
+            dispatchToMaxValueReducer(setMaxValueAC(0));
 
             setError('');
         }
@@ -95,8 +95,15 @@ export const CounterRedux = () => {
         dispatchToCounterReducer(setStartValueAC(0));
     }
 
-    const setIsSettingDispatch = (isSetting: boolean) => {
+    const setIsSettingToDispatch = (isSetting: boolean) => {
         dispatchToSettingReducer(setCounterAC(isSetting));
+    }
+
+    const setInputStartValueToDispatch = () => {
+        dispatchToStartValueReducer(setStartValueAC(0));
+    }
+    const setInputMaxValueToDispatch = () => {
+        dispatchToMaxValueReducer(setMaxValueAC(2));
     }
 
     /*--------------------------------------------*/
@@ -151,12 +158,12 @@ export const CounterRedux = () => {
             <div className="wrapper">
                 <div className="counterWrapper">
                     <SettingsCounter startValue={inputStartValue.startValue}
-                                     setInputStartValue={setInputStartValue}
+                                     setInputStartValue={setInputStartValueToDispatch}
                                      maxValue={inputMaxValue.maxValue}
-                                     setInputMaxValue={setInputMaxValue}
+                                     setInputMaxValue={setInputMaxValueToDispatch}
                                      pushValue={pushValue}
                                      isSetting={isSetting.isSetting}
-                                     setIsSetting={setIsSettingDispatch}
+                                     setIsSetting={setIsSettingToDispatch}
                     />
                     <DisplayCounter counter={counter.counter}
                                     startValue={inputStartValue.startValue}
