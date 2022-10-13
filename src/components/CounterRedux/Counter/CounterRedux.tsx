@@ -13,41 +13,49 @@ export const CounterRedux = () => {
 
     const [error, setError] = useState<string | null>('');
 
-    const MESSAGE_START = 'Введите значения и нажмите кнопку установить';
-    const MESSAGE_START_NULL = '';
-    const MESSAGE_ZERO = 'Значение должно быть больше 0!';
-    const MESSAGE_START_LESS_MAX = 'Начальное значение должно быть меньше максимального!';
-    const MESSAGE_START_NOT_MAX = 'Начальное значение не должно равняться максимальному!';
-    const MESSAGE_VALUE_NOT_INTEGER = 'Значение должно быть целым числом!';
+    // const MESSAGE_START = 'Введите значения и нажмите кнопку установить';
+    // const MESSAGE_START_NULL = '';
+    // const MESSAGE_ZERO = 'Значение должно быть больше 0!';
+    // const MESSAGE_START_LESS_MAX = 'Начальное значение должно быть меньше максимального!';
+    // const MESSAGE_START_NOT_MAX = 'Начальное значение не должно равняться максимальному!';
+    // const MESSAGE_VALUE_NOT_INTEGER = 'Значение должно быть целым числом!';
+
+    const warningMessages = {
+        MESSAGE_START: 'Введите значения и нажмите кнопку установить',
+        MESSAGE_START_NULL: '',
+        MESSAGE_ZERO: 'Значение должно быть больше 0!',
+        MESSAGE_START_LESS_MAX: 'Начальное значение должно быть меньше максимального!',
+        MESSAGE_START_NOT_MAX: 'Начальное значение не должно равняться максимальному!',
+        MESSAGE_VALUE_NOT_INTEGER: 'Значение должно быть целым числом!'
+    }
 
     useEffect(() => {
         if (inputStartValue > inputMaxValue) {
-            setError(`${MESSAGE_START_LESS_MAX}`);
-            //setError(text:'Начальное значение должно быть меньше максимального!', isError: true);
+            setError(warningMessages.MESSAGE_START_LESS_MAX);
         } else {
-            setError(`${MESSAGE_START_NULL}`);
+            setError(warningMessages.MESSAGE_START_NULL);
         }
         if (inputStartValue === inputMaxValue) {
-            setError(`${MESSAGE_START_NOT_MAX}`);
+            setError(warningMessages.MESSAGE_START_NOT_MAX);
         }
         if (inputStartValue < 0) {
-            setError(`${MESSAGE_ZERO}`);
+            setError(warningMessages.MESSAGE_ZERO);
         }
         if (inputMaxValue < 0) {
-            setError(`${MESSAGE_ZERO}`);
+            setError(warningMessages.MESSAGE_ZERO);
         }
         if (!Number.isInteger(inputMaxValue)) {
-            setError(`${MESSAGE_VALUE_NOT_INTEGER}`);
+            setError(warningMessages.MESSAGE_VALUE_NOT_INTEGER);
         }
         if (!Number.isInteger(inputStartValue)) {
-            setError(`${MESSAGE_VALUE_NOT_INTEGER}`);
+            setError(warningMessages.MESSAGE_VALUE_NOT_INTEGER);
         }
     }, [inputStartValue, inputMaxValue]);
 
     const pushValue = () => {
 
         if (inputStartValue > inputMaxValue) {
-            setError(`${MESSAGE_START_LESS_MAX}`);
+            setError(warningMessages.MESSAGE_START_LESS_MAX);
         } else {
             setIsSetting(false);
             setCounter(inputStartValue);
@@ -135,7 +143,7 @@ export const CounterRedux = () => {
                                     reset={resetCounter}
                                     error={error}
                                     isSetting={isSetting}
-                                    messageStart={MESSAGE_START}
+                                    messageStart={warningMessages.MESSAGE_START_LESS_MAX}
                     />
                 </div>
             </div>
