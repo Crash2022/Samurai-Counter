@@ -1,8 +1,8 @@
 import React from 'react';
 import '../../../App.css';
+//import {CounterMonitor} from "./CounterMonitor";
+//import {CounterControl} from "./CounterControl";
 import stylesMain from '../../../styles/Counter.module.css'
-import {CounterMonitor} from "./CounterMonitor";
-import {CounterControl} from "./CounterControl";
 import stylesDisplay from "../../../styles/DisplayCounter.module.css";
 import {Button} from "../../../UI/Button";
 

@@ -1,7 +1,8 @@
 import {combineReducers, createStore} from "redux";
 import {counterReducer,
     IncreaseACType, ResetACType,
-    SetMaxValueACType, SetMinValueACType, SetCounterACType} from "./counter-reducer";
+    SetMaxValueACType, SetMinValueACType,
+    SetCounterACType, PushValueACType} from "./counter-reducer";
 
 const rootReducer = combineReducers({
     counter: counterReducer
@@ -16,7 +17,8 @@ export type CounterActionsType =
     ResetACType |
     SetCounterACType |
     SetMinValueACType |
-    SetMaxValueACType;
+    SetMaxValueACType |
+    PushValueACType;
 
 // @ts-ignore
 window.store = store;

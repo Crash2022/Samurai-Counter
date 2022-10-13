@@ -1,8 +1,8 @@
 import React, {ChangeEvent} from 'react';
 import '../../../App.css';
-import stylesMain from '../../../styles/Counter.module.css'
 //import {SettingsMonitor} from "./SettingsMonitor";
 //import {SettingsControl} from "./SettingsControl";
+import stylesMain from '../../../styles/Counter.module.css'
 import stylesSet from "../../../styles/SettingsCounter.module.css";
 import stylesDisplay from "../../../styles/DisplayCounter.module.css";
 import {Button} from "../../../UI/Button";
