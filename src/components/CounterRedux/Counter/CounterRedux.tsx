@@ -3,11 +3,12 @@ import '../../../App.css';
 import {SettingsCounter} from "../SettingsCounter/SettingsCounter";
 import {DisplayCounter} from "../DisplayCounter/DisplayCounter";
 import {
+    initialState,
     counterReducer,
     increaseCounterAC,
-    initialState,
     setMaxValueAC,
-    setStartValueAC
+    setStartValueAC, resetCounterAC,
+    //resetCounterAC
 } from "../../../redux/counter-reducer";
 import {setCounterAC} from "../../../redux/counter-reducer";
 
@@ -40,7 +41,7 @@ export const CounterRedux = () => {
 
     /*-------------------------------------------------------------------*/
 
-    useEffect(() => {
+    /*useEffect(() => {
         if (inputStartValue.startValue > inputMaxValue.maxValue) {
             setError(warningMessages.MESSAGE_START_LESS_MAX);
         } else {
@@ -61,15 +62,15 @@ export const CounterRedux = () => {
         if (!Number.isInteger(inputStartValue.startValue)) {
             setError(warningMessages.MESSAGE_VALUE_NOT_INTEGER);
         }
-    }, [inputStartValue.startValue, inputMaxValue.maxValue]);
+    }, [inputStartValue.startValue, inputMaxValue.maxValue]);*/
 
     const pushValue = () => {
 
-        if (inputStartValue.startValue > inputMaxValue.maxValue) {
+        /*if (inputStartValue.startValue > inputMaxValue.maxValue) {
             setError(warningMessages.MESSAGE_START_LESS_MAX);
-        } else {
+        } else {*/
             //setIsSetting(false);
-            dispatchToSettingReducer(setCounterAC(false));
+            dispatchToSettingReducer(setCounterAC(false)); //done
 
             //setCounter(inputStartValue);
             dispatchToCounterReducer(setStartValueAC(0));
@@ -81,30 +82,30 @@ export const CounterRedux = () => {
             dispatchToMaxValueReducer(setMaxValueAC(0));
 
             setError('');
-        }
+        //}
     }
 
     const increaseCounter = (counter: number) => {
         // let newCount = counter + 1;
         // setCounter(newCount);
-        dispatchToCounterReducer(increaseCounterAC(counter));
-    }
+        dispatchToCounterReducer(increaseCounterAC(0));
+    } // done
 
     const resetCounter = () => {
         //setCounter(inputStartValue);
-        dispatchToCounterReducer(setStartValueAC(0));
-    }
+        dispatchToCounterReducer(resetCounterAC(inputStartValue.startValue));
+    } // done
 
     const setIsSettingToDispatch = (isSetting: boolean) => {
         dispatchToSettingReducer(setCounterAC(isSetting));
-    }
+    } // done
 
-    const setInputStartValueToDispatch = () => {
-        dispatchToStartValueReducer(setStartValueAC(0));
-    }
-    const setInputMaxValueToDispatch = () => {
-        dispatchToMaxValueReducer(setMaxValueAC(2));
-    }
+    const setInputStartValueToDispatch = (startValue: number) => {
+        dispatchToStartValueReducer(setStartValueAC(startValue));
+    } // done
+    const setInputMaxValueToDispatch = (maxValue: number) => {
+        dispatchToMaxValueReducer(setMaxValueAC(maxValue));
+    } // done
 
     /*--------------------------------------------*/
 

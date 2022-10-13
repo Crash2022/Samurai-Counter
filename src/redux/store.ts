@@ -1,6 +1,6 @@
 import {combineReducers, createStore} from "redux";
 import {counterReducer,
-    IncreaseACType, //ResetACType,
+    IncreaseACType, ResetACType,
     SetMaxValueACType, SetMinValueACType, SetCounterACType} from "./counter-reducer";
 
 const rootReducer = combineReducers({
@@ -13,7 +13,7 @@ export type AppRootStateType = ReturnType<typeof rootReducer>
 
 export type CounterActionsType =
     IncreaseACType |
-    //ResetACType |
+    ResetACType |
     SetCounterACType |
     SetMinValueACType |
     SetMaxValueACType;

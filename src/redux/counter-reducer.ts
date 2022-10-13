@@ -1,10 +1,10 @@
 import {CounterActionsType} from "./store";
 
-export type InitialStateType ={
+export type InitialStateType = {
     counter: number
     maxValue: number
     startValue: number
-    //reset: number
+    reset: number
     isSetting: boolean
 }
 
@@ -12,7 +12,7 @@ export const initialState: InitialStateType = {
     counter: 0,
     maxValue: 0,
     startValue: 0,
-    //reset: 0,
+    reset: 0,
     isSetting: true
 }
 
@@ -21,10 +21,10 @@ export const increaseCounterAC = (counter: number) => ({
     type: 'INCREASE_COUNTER', counter
 } as const);
 
-// export type ResetACType = ReturnType<typeof resetCounterAC>;
-// export const resetCounterAC = () => ({
-//     type: 'RESET_COUNTER'
-// } as const);
+export type ResetACType = ReturnType<typeof resetCounterAC>;
+export const resetCounterAC = (startValue: number) => ({
+    type: 'RESET_COUNTER', startValue
+} as const);
 
 export type SetCounterACType = ReturnType<typeof setCounterAC>;
 export const setCounterAC = (isSetting: boolean) => ({
@@ -46,8 +46,8 @@ export const counterReducer = (state: InitialStateType = initialState, action: C
     switch(action.type) {
         case 'INCREASE_COUNTER':
             return {...state, counter: state.counter+1};
-        // case 'RESET_COUNTER':
-        //     return {...state, counter: 0};
+        case 'RESET_COUNTER':
+            return {...state, counter: action.startValue};
         case 'SET_COUNTER':
             return {...state, isSetting: action.isSetting};
         case 'SET_MAX_VALUE':
