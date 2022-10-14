@@ -23,7 +23,7 @@ export const CounterReducer = () => {
         counter: 0,
         maxValue: 0,
         startValue: 0,
-        reset: 0,
+        //reset: 0,
         isSetting: true
     });
 

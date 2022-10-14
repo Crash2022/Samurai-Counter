@@ -4,7 +4,7 @@ export type InitialStateType = {
     counter: number
     maxValue: number
     startValue: number
-    reset: number
+    //reset: number
     isSetting: boolean
 }
 
@@ -12,7 +12,7 @@ export const initialState: InitialStateType = {
     counter: 0,
     maxValue: 0,
     startValue: 0,
-    reset: 0,
+    //reset: 0,
     isSetting: true
 }
 
@@ -54,7 +54,8 @@ export const counterReducer = (state: InitialStateType = initialState,
         case 'INCREASE_COUNTER':
             return {...state, counter: state.counter+1};
         case 'RESET_COUNTER':
-            return {...state, counter: action.startValue, reset: action.startValue};
+            //return {...state, counter: action.startValue, reset: action.startValue};
+            return {...state, counter: action.startValue};
         case 'SET_COUNTER':
             return {...state, isSetting: action.isSetting};
         case 'SET_MAX_VALUE':
