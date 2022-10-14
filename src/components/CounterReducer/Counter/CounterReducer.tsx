@@ -3,18 +3,16 @@ import '../../../App.css';
 import {SettingsCounter} from "../SettingsCounter/SettingsCounter";
 import {DisplayCounter} from "../DisplayCounter/DisplayCounter";
 import {initialState,
-    counterReducer,
-    increaseCounterAC,
-    setMaxValueAC,
-    setStartValueAC,
-    resetCounterAC} from "../../../redux/counter-reducer";
+    counterReducer, increaseCounterAC,
+    setMaxValueAC, setStartValueAC,
+    resetCounterAC, pushValueAC} from "../../../redux/counter-reducer";
 import {setCounterAC} from "../../../redux/counter-reducer";
 
-export const CounterRedux = () => {
+export const CounterReducer = () => {
 
     const [state, dispatchToReducer] = useReducer(counterReducer, initialState);
 
-    //const [inputMaxValue, setInputMaxValue] = useState<number>(0);
+    /*//const [inputMaxValue, setInputMaxValue] = useState<number>(0);
     //const [inputMaxValue, dispatchToMaxValueReducer] = useReducer(counterReducer, initialState);
 
     //const [inputStartValue, setInputStartValue] = useState<number>(0);
@@ -24,7 +22,7 @@ export const CounterRedux = () => {
     //const [counter, dispatchToCounterReducer] = useReducer(counterReducer, initialState);
 
     //const [isSetting, setIsSetting] = useState<boolean>(true);
-    //const [isSetting, dispatchToSettingReducer] = useReducer(counterReducer, initialState);
+    //const [isSetting, dispatchToSettingReducer] = useReducer(counterReducer, initialState);*/
 
     /*-------------------------------------------------------------------*/
 
@@ -41,6 +39,7 @@ export const CounterRedux = () => {
 
     /*-------------------------------------------------------------------*/
 
+    //useEffect для вывода сообщений об ошибках
     useEffect(() => {
         if (state.startValue > state.maxValue) {
             setError(warningMessages.MESSAGE_START_LESS_MAX);
@@ -69,7 +68,7 @@ export const CounterRedux = () => {
         if (state.startValue > state.maxValue) {
             setError(warningMessages.MESSAGE_START_LESS_MAX);
         } else {
-            //setIsSetting(false);
+           /* //setIsSetting(false);
             dispatchToReducer(setCounterAC(false));
 
             //setCounter(inputStartValue);
@@ -79,8 +78,9 @@ export const CounterRedux = () => {
             dispatchToReducer(setStartValueAC(state.startValue));
 
             //setInputMaxValue(inputMaxValue);
-            dispatchToReducer(setMaxValueAC(state.maxValue));
+            dispatchToReducer(setMaxValueAC(state.maxValue));*/
 
+            dispatchToReducer(pushValueAC(false, state.startValue, state.maxValue));
             setError('');
         }
     }
@@ -107,7 +107,7 @@ export const CounterRedux = () => {
         dispatchToReducer(setMaxValueAC(maxValue));
     }
 
-    /*--------------------------------------------*/
+    /*-------------------------------------------------------------------*/
 
     // важен порядок использования useEffect
 
@@ -152,7 +152,7 @@ export const CounterRedux = () => {
     //     localStorage.setItem('error', JSON.stringify(error));
     // }, [inputStartValue, inputMaxValue, isSetting, counter, error])
 
-    /*--------------------------------------------*/
+    /*-------------------------------------------------------------------*/
 
     return (
         <div className="App">

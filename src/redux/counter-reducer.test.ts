@@ -17,7 +17,7 @@ test('counter should be increase', ()=> {
     expect(endState.counter).toBe(1);
 });
 
-test('counter should be reset to 0', ()=> {
+test('counter should be reset to some start value', ()=> {
 
     const startState: InitialStateType = {
         counter: 5,
@@ -27,10 +27,10 @@ test('counter should be reset to 0', ()=> {
         isSetting: true
     };
 
-    const action = resetCounterAC(0);
+    const action = resetCounterAC(1);
     const endState = counterReducer(startState, action);
 
-    expect(endState.counter).toBe(0);
+    expect(endState.counter).toBe(1);
 });
 
 test('counter settings should be unSet', ()=> {

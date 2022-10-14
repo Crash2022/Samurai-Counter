@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
-import {CounterRedux} from "./components/CounterRedux/Counter/CounterRedux";
+import {CounterReducer} from "./components/CounterReducer/Counter/CounterReducer";
 
-export const AppRedux = () => {
+export const AppReducer = () => {
 
     // const [changeCounter, setChangeCounter] = useState<boolean>(true);
     //
@@ -25,7 +25,7 @@ export const AppRedux = () => {
     return (
         <div className="App">
             <div className="wrapper">
-                {/*<CounterRedux />*/} На всякий случай оставлю компоненту
+                {/*<CounterReduсer />*/} На всякий случай оставлю компоненту
             </div>
         </div>
     );

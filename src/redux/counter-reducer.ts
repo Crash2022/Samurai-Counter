@@ -42,8 +42,9 @@ export const setStartValueAC = (startValue: number) => ({
 } as const);
 
 export type PushValueACType = ReturnType<typeof pushValueAC>;
-export const pushValueAC = () => ({
-    type: 'PUSH_VALUE'
+export const pushValueAC = (isSetting: boolean, startValue: number, maxValue: number) => ({
+    type: 'PUSH_VALUE',
+    isSetting, startValue, maxValue
 } as const);
 
 export const counterReducer = (state: InitialStateType = initialState, action: CounterActionsType):
@@ -60,7 +61,8 @@ export const counterReducer = (state: InitialStateType = initialState, action: C
         case 'SET_START_VALUE':
             return {...state, startValue: action.startValue};
         case 'PUSH_VALUE':
-            return state;
+            return {...state, isSetting: action.isSetting,
+                startValue: action.startValue, maxValue: action.maxValue};
         default:
             return state;
     }

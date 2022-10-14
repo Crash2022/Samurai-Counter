@@ -4,9 +4,9 @@ import './index.css';
 //import {App} from './App';
 //import {AppRedux} from './AppRedux';
 import * as serviceWorker from './serviceWorker';
-import {CounterRedux} from "./components/CounterRedux/Counter/CounterRedux";
+import {CounterReducer} from "./components/CounterReducer/Counter/CounterReducer";
 
-ReactDOM.render(<CounterRedux />, document.getElementById('root'));
+ReactDOM.render(<CounterReducer />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
