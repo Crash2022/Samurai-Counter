@@ -2,42 +2,15 @@ import React, {useEffect, useReducer, useState} from 'react';
 import '../../../App.css';
 import {SettingsCounter} from "../SettingsCounter/SettingsCounter";
 import {DisplayCounter} from "../DisplayCounter/DisplayCounter";
-import {//initialState,
+import {initialState,
     counterReducer, increaseCounterAC,
     setMaxValueAC, setStartValueAC,
     resetCounterAC, pushValueAC} from "../../../redux/counter-reducer";
 import {setCounterAC} from "../../../redux/counter-reducer";
 
-// export type InitialStateType = {
-//     counter: number
-//     maxValue: number
-//     startValue: number
-//     reset: number
-//     isSetting: boolean
-// }
+export const CounterRedux = () => {
 
-export const CounterReducer = () => {
-
-    //const [state, dispatchToReducer] = useReducer(counterReducer, initialState);
-    const [state, dispatchToReducer] = useReducer(counterReducer, {
-        counter: 0,
-        maxValue: 0,
-        startValue: 0,
-        reset: 0,
-        isSetting: true
-    });
-
-    /*//const [inputMaxValue, setInputMaxValue] = useState<number>(0);
-    //const [inputMaxValue, dispatchToMaxValueReducer] = useReducer(counterReducer, initialState);
-
-    //const [inputStartValue, setInputStartValue] = useState<number>(0);
-    //const [inputStartValue, dispatchToStartValueReducer] = useReducer(counterReducer, initialState);
-
-    //const [counter, setCounter] = useState<number>(0);
-    //const [counter, dispatchToCounterReducer] = useReducer(counterReducer, initialState);
-
-    //const [isSetting, setIsSetting] = useState<boolean>(true);
-    //const [isSetting, dispatchToSettingReducer] = useReducer(counterReducer, initialState);*/
+    const [state, dispatchToReducer] = useReducer(counterReducer, initialState);
 
     /*-------------------------------------------------------------------*/
 
@@ -102,13 +75,10 @@ export const CounterReducer = () => {
     }
 
     const increaseCounter = () => {
-        // let newCount = counter + 1;
-        // setCounter(newCount);
         dispatchToReducer(increaseCounterAC(state.counter));
     }
 
     const resetCounter = () => {
-        //setCounter(inputStartValue);
         dispatchToReducer(resetCounterAC(state.startValue));
     }
 
@@ -173,8 +143,9 @@ export const CounterReducer = () => {
     return (
         <div className="App">
             <div style={{textAlign: 'center', marginTop: '20px'}}>
-                useReducer
+                Redux
             </div>
+
             <div className="wrapper">
                 <div className="counterWrapper">
                     <SettingsCounter startValue={state.startValue}
