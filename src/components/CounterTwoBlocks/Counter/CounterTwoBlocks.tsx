@@ -122,14 +122,11 @@ export const CounterTwoBlocks = () => {
 
     return (
         <div className="counterWrapper">
-            <SettingsCounter counter={counter}
-                             startValue={inputStartValue}
+            <SettingsCounter startValue={inputStartValue}
                              setInputStartValue={setInputStartValue}
                              maxValue={inputMaxValue}
                              setInputMaxValue={setInputMaxValue}
                              pushValue={pushValue}
-                             error={error}
-                             setError={setError}
                              isSetting={isSetting}
                              setIsSetting={setIsSetting}
             />

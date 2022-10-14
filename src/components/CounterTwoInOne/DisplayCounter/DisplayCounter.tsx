@@ -7,9 +7,7 @@ import {Button} from "../../../UI/Button";
 export type DisplayCounterPropsType = {
     counter: number
     startValue: number
-    setInputStartValue: (startValue: number) => void
     maxValue: number
-    setInputMaxValue: (startValue: number) => void
     pushValue: () => void
     increase: () => void
     reset: () => void

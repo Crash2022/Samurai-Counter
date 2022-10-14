@@ -122,21 +122,17 @@ export const CounterTwoInOne = () => {
         <div className="counterWrapper">
             {
                 settingsOn
-                    ? <SettingsCounter counter={counter}
-                                       startValue={inputStartValue}
+                    ? <SettingsCounter startValue={inputStartValue}
                                        setInputStartValue={setInputStartValue}
                                        maxValue={inputMaxValue}
                                        setInputMaxValue={setInputMaxValue}
                                        pushValue={pushValue}
-                                       error={error}
                                        isSetting={isSetting}
                                        setIsSetting={setIsSetting}
                     />
                     : <DisplayCounter counter={counter}
                                       startValue={inputStartValue}
-                                      setInputStartValue={setInputStartValue}
                                       maxValue={inputMaxValue}
-                                      setInputMaxValue={setInputMaxValue}
                                       pushValue={pushValue}
                                       increase={increaseCounter}
                                       reset={resetCounter}

@@ -4,7 +4,6 @@ import stylesMain from '../../../styles/Counter.module.css'
 import stylesSet from '../../../styles/SettingsCounter.module.css'
 
 export type SettingsMonitorPropsType = {
-    counter: number
     startValue: number
     setInputStartValue: (startValue: number) => void
     maxValue: number

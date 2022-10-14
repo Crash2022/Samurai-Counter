@@ -1,16 +1,18 @@
-import React, {useEffect, useReducer, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../../../App.css';
 import {SettingsCounter} from "../SettingsCounter/SettingsCounter";
 import {DisplayCounter} from "../DisplayCounter/DisplayCounter";
-import {initialState,
-    counterReducer, increaseCounterAC,
+import {InitialStateType, increaseCounterAC,
     setMaxValueAC, setStartValueAC,
     resetCounterAC, pushValueAC} from "../../../redux/counter-reducer";
 import {setCounterAC} from "../../../redux/counter-reducer";
+import {useDispatch, useSelector} from "react-redux";
+import {AppRootStateType} from "../../../redux/store";
 
 export const CounterRedux = () => {
 
-    const [state, dispatchToReducer] = useReducer(counterReducer, initialState);
+    const dispatch = useDispatch();
+    const counter = useSelector<AppRootStateType, InitialStateType>( state => state.counter);
 
     /*-------------------------------------------------------------------*/
 
@@ -29,31 +31,31 @@ export const CounterRedux = () => {
 
     //useEffect для вывода сообщений об ошибках
     useEffect(() => {
-        if (state.startValue > state.maxValue) {
+        if (counter.startValue > counter.maxValue) {
             setError(warningMessages.MESSAGE_START_LESS_MAX);
         } else {
             setError(warningMessages.MESSAGE_START_NULL);
         }
-        if (state.startValue === state.maxValue) {
+        if (counter.startValue === counter.maxValue) {
             setError(warningMessages.MESSAGE_START_NOT_MAX);
         }
-        if (state.startValue < 0) {
+        if (counter.startValue < 0) {
             setError(warningMessages.MESSAGE_ZERO);
         }
-        if (state.maxValue < 0) {
+        if (counter.maxValue < 0) {
             setError(warningMessages.MESSAGE_ZERO);
         }
-        if (!Number.isInteger(state.maxValue)) {
+        if (!Number.isInteger(counter.maxValue)) {
             setError(warningMessages.MESSAGE_VALUE_NOT_INTEGER);
         }
-        if (!Number.isInteger(state.startValue)) {
+        if (!Number.isInteger(counter.startValue)) {
             setError(warningMessages.MESSAGE_VALUE_NOT_INTEGER);
         }
-    }, [state.startValue, state.maxValue]);
+    }, [counter.startValue, counter.maxValue]);
 
     const pushValue = () => {
 
-        if (state.startValue > state.maxValue) {
+        if (counter.startValue > counter.maxValue) {
             setError(warningMessages.MESSAGE_START_LESS_MAX);
         } else {
            /* //setIsSetting(false);
@@ -68,29 +70,29 @@ export const CounterRedux = () => {
             //setInputMaxValue(inputMaxValue);
             dispatchToReducer(setMaxValueAC(state.maxValue));*/
 
-            const action = pushValueAC(false, state.counter, state.startValue, state.maxValue);
-            dispatchToReducer(action);
+            const action = pushValueAC(false, counter.counter, counter.startValue, counter.maxValue);
+            dispatch(action);
             setError('');
         }
     }
 
     const increaseCounter = () => {
-        dispatchToReducer(increaseCounterAC(state.counter));
+        dispatch(increaseCounterAC(counter.counter));
     }
 
     const resetCounter = () => {
-        dispatchToReducer(resetCounterAC(state.startValue));
+        dispatch(resetCounterAC(counter.startValue));
     }
 
     const setIsSettingToDispatch = (isSetting: boolean) => {
-        dispatchToReducer(setCounterAC(isSetting));
+        dispatch(setCounterAC(isSetting));
     }
 
     const setInputStartValueToDispatch = (startValue: number) => {
-        dispatchToReducer(setStartValueAC(startValue));
+        dispatch(setStartValueAC(startValue));
     }
     const setInputMaxValueToDispatch = (maxValue: number) => {
-        dispatchToReducer(setMaxValueAC(maxValue));
+        dispatch(setMaxValueAC(maxValue));
     }
 
     /*-------------------------------------------------------------------*/
@@ -148,21 +150,21 @@ export const CounterRedux = () => {
 
             <div className="wrapper">
                 <div className="counterWrapper">
-                    <SettingsCounter startValue={state.startValue}
+                    <SettingsCounter startValue={counter.startValue}
                                      setInputStartValue={setInputStartValueToDispatch}
-                                     maxValue={state.maxValue}
+                                     maxValue={counter.maxValue}
                                      setInputMaxValue={setInputMaxValueToDispatch}
                                      pushValue={pushValue}
-                                     isSetting={state.isSetting}
+                                     isSetting={counter.isSetting}
                                      setIsSetting={setIsSettingToDispatch}
                     />
-                    <DisplayCounter counter={state.counter}
-                                    startValue={state.startValue}
-                                    maxValue={state.maxValue}
+                    <DisplayCounter counter={counter.counter}
+                                    startValue={counter.startValue}
+                                    maxValue={counter.maxValue}
                                     increase={increaseCounter}
                                     reset={resetCounter}
                                     error={error}
-                                    isSetting={state.isSetting}
+                                    isSetting={counter.isSetting}
                                     messageStart={warningMessages.MESSAGE_START_LESS_MAX}
                     />
                 </div>

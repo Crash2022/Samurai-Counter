@@ -1,7 +1,5 @@
 import React, {ChangeEvent} from 'react';
 import '../../../App.css';
-//import {SettingsMonitor} from "./SettingsMonitor";
-//import {SettingsControl} from "./SettingsControl";
 import stylesMain from '../../../styles/Counter.module.css'
 import stylesSet from "../../../styles/SettingsCounter.module.css";
 import stylesDisplay from "../../../styles/DisplayCounter.module.css";
@@ -46,13 +44,6 @@ export const SettingsCounter: React.FC<SettingsCounterPropsType> = (props) => {
 
     return (
         <div className={stylesMain.displayCounter}>
-            {/*<SettingsMonitor counter={props.counter}
-                             startValue={props.startValue}
-                             setInputStartValue={props.setInputStartValue}
-                             maxValue={props.maxValue}
-                             setInputMaxValue={props.setInputMaxValue}
-                             setIsSetting={props.setIsSetting}
-            />*/}
 
             <div className={stylesMain.counterMonitor}>
                 <div className={stylesSet.settingsMonitor}>
@@ -100,12 +91,6 @@ export const SettingsCounter: React.FC<SettingsCounterPropsType> = (props) => {
 
                 </div>
             </div>
-
-            {/*<SettingsControl pushValue={props.pushValue}
-                             startValue={props.startValue}
-                             maxValue={props.maxValue}
-                             isSetting={props.isSetting}
-            />*/}
 
             <div className={stylesDisplay.counterControl}>
                 <div className={stylesSet.set}>
