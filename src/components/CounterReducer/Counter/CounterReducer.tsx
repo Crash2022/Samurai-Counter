@@ -80,15 +80,16 @@ export const CounterReducer = () => {
             //setInputMaxValue(inputMaxValue);
             dispatchToReducer(setMaxValueAC(state.maxValue));*/
 
-            dispatchToReducer(pushValueAC(false, state.startValue, state.maxValue));
+            const action = pushValueAC(false, state.counter, state.startValue, state.maxValue);
+            dispatchToReducer(action);
             setError('');
         }
     }
 
-    const increaseCounter = (counter: number) => {
+    const increaseCounter = () => {
         // let newCount = counter + 1;
         // setCounter(newCount);
-        dispatchToReducer(increaseCounterAC(counter));
+        dispatchToReducer(increaseCounterAC(state.counter));
     }
 
     const resetCounter = () => {

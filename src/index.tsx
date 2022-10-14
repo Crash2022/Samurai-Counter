@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 //import {App} from './App';
-//import {AppRedux} from './AppRedux';
+//import {AppReducer} from './AppReducer';
 import * as serviceWorker from './serviceWorker';
 import {CounterReducer} from "./components/CounterReducer/Counter/CounterReducer";
 

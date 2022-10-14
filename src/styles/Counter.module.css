@@ -32,8 +32,8 @@
 .counterMonitor.counterMonitorStartTitle {
     padding: 10px;
     background-color: white;
-    color: black;
     font-size: 30px;
+    color: red; /*цвет начального сообщения*/
 }
 .counterMonitor.counterMonitorStopError {
     padding: 10px;

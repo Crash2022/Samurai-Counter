@@ -10,7 +10,7 @@ export type DisplayCounterPropsType = {
     counter: number
     startValue: number
     maxValue: number
-    increase: (counter: number) => void
+    increase: () => void
     reset: () => void
     error: string | null
     isSetting: boolean
@@ -28,7 +28,7 @@ export const DisplayCounter: React.FC<DisplayCounterPropsType> = (props) => {
     /*----------------------------------------------------------------------------*/
 
     const onClickHandlerStart = () => {
-        props.increase(props.counter);
+        props.increase();
     }
 
     const onClickHandlerReset = () => {
