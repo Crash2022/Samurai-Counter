@@ -58,18 +58,6 @@ export const CounterRedux = () => {
         if (counter.startValue > counter.maxValue) {
             setError(warningMessages.MESSAGE_START_LESS_MAX);
         } else {
-           /* //setIsSetting(false);
-            dispatchToReducer(setCounterAC(false));
-
-            //setCounter(inputStartValue);
-            dispatchToReducer(setStartValueAC(state.startValue));
-
-            //setInputStartValue(inputStartValue);
-            dispatchToReducer(setStartValueAC(state.startValue));
-
-            //setInputMaxValue(inputMaxValue);
-            dispatchToReducer(setMaxValueAC(state.maxValue));*/
-
             const action = pushValueAC(false, counter.counter, counter.startValue, counter.maxValue);
             dispatch(action);
             setError('');

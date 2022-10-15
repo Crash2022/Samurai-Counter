@@ -3,6 +3,7 @@ import {counterReducer,
     IncreaseACType, ResetACType,
     SetMaxValueACType, SetMinValueACType,
     SetCounterACType, PushValueACType} from "./counter-reducer";
+//import {throttle} from "lodash";
 
 const rootReducer = combineReducers({
     counter: counterReducer
@@ -22,3 +23,20 @@ export type CounterActionsType =
 
 // @ts-ignore
 window.store = store;
+
+
+// LocalStorage
+
+// store.js
+//import throttle from 'lodash.throttle';
+
+/*const persistedState = loadState();
+const store = createStore(
+    app,
+    persistedState
+);
+store.subscribe(throttle(() => {
+    saveState({
+    todos: store.getState().todos
+  });
+}, 1000));*/
