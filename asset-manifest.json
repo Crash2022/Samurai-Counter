@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Samurai-Counter/static/css/main.5d002fde.css",
+    "main.js": "/Samurai-Counter/static/js/main.67dacd00.js",
+    "index.html": "/Samurai-Counter/index.html",
+    "main.5d002fde.css.map": "/Samurai-Counter/static/css/main.5d002fde.css.map",
+    "main.67dacd00.js.map": "/Samurai-Counter/static/js/main.67dacd00.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5d002fde.css",
+    "static/js/main.67dacd00.js"
+  ]
+}
