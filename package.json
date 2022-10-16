@@ -1,7 +1,8 @@
 {
-  "name": "it-incubator-todolist-ts",
+  "name": "it-incubator-counter",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://Crash2022.github.io/Samurai-Counter",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -25,7 +26,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -43,6 +46,7 @@
     ]
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.186"
+    "@types/lodash": "^4.14.186",
+    "gh-pages": "^4.0.0"
   }
 }
