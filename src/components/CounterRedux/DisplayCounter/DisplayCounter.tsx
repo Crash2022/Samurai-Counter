@@ -20,7 +20,7 @@ export const DisplayCounter = () => {
 
     /*----------------------------------------------------------------------------*/
 
-    const onClickHandlerStart = () => {
+    const onClickHandlerIncrease = () => {
         dispatch(increaseCounterAC(counter.counter));
     }
     const onClickHandlerReset = () => {
@@ -45,7 +45,7 @@ export const DisplayCounter = () => {
             <div className={stylesDisplay.counterControl}>
                 <div className={stylesDisplay.increase}>
                     <Button name={'Увеличить'}
-                            callback={onClickHandlerStart}
+                            callback={onClickHandlerIncrease}
                             disabled={counter.counter === counter.maxValue || counter.isSetting}
                     />
                 </div>

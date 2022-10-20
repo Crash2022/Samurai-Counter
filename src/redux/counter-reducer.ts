@@ -20,7 +20,6 @@ export const errorMessages = {
 //     counter: number
 //     maxValue: number
 //     startValue: number
-//     //reset: number
 //     isSetting: boolean
 //     errorMessage: string
 // }
@@ -30,7 +29,6 @@ export const initialState = {
     counter: 0,
     maxValue: 0,
     startValue: 0,
-    //reset: 0,
     isSetting: true,
     errorMessage: ''
 }

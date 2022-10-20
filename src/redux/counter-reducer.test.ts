@@ -8,7 +8,6 @@ beforeEach(() => {
         counter: 0,
         maxValue: 0,
         startValue: 0,
-        //reset: 0,
         isSetting: true,
         errorMessage: ''
     };
@@ -28,7 +27,6 @@ test('counter should be reset to start value', ()=> {
     const endState = counterReducer(startState, action);
 
     expect(endState.counter).toBe(1);
-    //expect(endState.reset).toBe(1);
 });
 
 test('counter settings should be unSet', ()=> {

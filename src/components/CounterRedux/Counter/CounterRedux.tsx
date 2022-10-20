@@ -8,12 +8,11 @@ import {useDispatch} from "react-redux";
 export const CounterRedux = () => {
 
     const dispatch = useDispatch();
-    //const counter = useSelector<AppRootStateType, InitialStateType>( state => state.counter);
 
     /*-------------------------------------------------------------------*/
 
     useEffect(() => {
-            dispatch(setErrorAC());
+        dispatch(setErrorAC());
     },[]);
 
     /*-------------------------------------------------------------------*/

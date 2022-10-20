@@ -16,14 +16,14 @@ export const SettingsCounter = () => {
     const counter = useSelector<AppRootStateType, InitialStateType>( state => state.counter);
 
     const onChangeClickHandlerMax = (event: ChangeEvent<HTMLInputElement>) => {
-        dispatch(setCounterAC(counter.isSetting));
+        //dispatch(setCounterAC(counter.isSetting));
         dispatch(setMaxValueAC(+event.currentTarget.value));
         dispatch(setCounterAC(true));
         dispatch(setErrorAC());
     }
 
     const onChangeClickHandlerStart = (event: ChangeEvent<HTMLInputElement>) => {
-        dispatch(setCounterAC(counter.isSetting));
+        //dispatch(setCounterAC(counter.isSetting));
         dispatch(setStartValueAC(+event.currentTarget.value));
         dispatch(setCounterAC(true));
         dispatch(setErrorAC());
@@ -39,8 +39,8 @@ export const SettingsCounter = () => {
     /*----------------------------------------------------------------------------*/
 
     const onClickHandlerSet = () => {
-        dispatch(pushValueAC(false, counter.counter, counter.startValue,
-            counter.maxValue));
+        dispatch(pushValueAC(false, counter.counter,
+            counter.startValue, counter.maxValue));
         dispatch(setErrorAC());
     }
 
