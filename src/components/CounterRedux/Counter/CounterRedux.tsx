@@ -2,10 +2,7 @@ import React, {useEffect, useState} from 'react';
 import '../../../App.css';
 import {SettingsCounter} from "../SettingsCounter/SettingsCounter";
 import {DisplayCounter} from "../DisplayCounter/DisplayCounter";
-import {InitialStateType, increaseCounterAC,
-    setMaxValueAC, setStartValueAC,
-    resetCounterAC, pushValueAC} from "../../../redux/counter-reducer";
-import {setCounterAC} from "../../../redux/counter-reducer";
+import {InitialStateType, pushValueAC} from "../../../redux/counter-reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../../redux/store";
 
@@ -19,7 +16,7 @@ export const CounterRedux = () => {
     const [error, setError] = useState<string | null>('');
 
     const warningMessages = {
-        MESSAGE_START: 'Введите значения и нажмите кнопку установить',
+        //MESSAGE_START: 'Введите значения и нажмите кнопку установить',
         MESSAGE_START_NULL: '',
         MESSAGE_ZERO: 'Значение должно быть больше 0!',
         MESSAGE_START_LESS_MAX: 'Начальное значение должно быть меньше максимального!',
@@ -58,29 +55,9 @@ export const CounterRedux = () => {
         if (counter.startValue > counter.maxValue) {
             setError(warningMessages.MESSAGE_START_LESS_MAX);
         } else {
-            const action = pushValueAC(false, counter.counter, counter.startValue, counter.maxValue);
-            dispatch(action);
+            dispatch(pushValueAC(false, counter.counter, counter.startValue, counter.maxValue));
             setError('');
         }
-    }
-
-    const increaseCounter = () => {
-        dispatch(increaseCounterAC(counter.counter));
-    }
-
-    const resetCounter = () => {
-        dispatch(resetCounterAC(counter.startValue));
-    }
-
-    const setIsSettingToDispatch = (isSetting: boolean) => {
-        dispatch(setCounterAC(isSetting));
-    }
-
-    const setInputStartValueToDispatch = (startValue: number) => {
-        dispatch(setStartValueAC(startValue));
-    }
-    const setInputMaxValueToDispatch = (maxValue: number) => {
-        dispatch(setMaxValueAC(maxValue));
     }
 
     /*-------------------------------------------------------------------*/
@@ -138,21 +115,8 @@ export const CounterRedux = () => {
 
             <div className="wrapper">
                 <div className="counterWrapper">
-                    <SettingsCounter startValue={counter.startValue}
-                                     setInputStartValue={setInputStartValueToDispatch}
-                                     maxValue={counter.maxValue}
-                                     setInputMaxValue={setInputMaxValueToDispatch}
-                                     pushValue={pushValue}
-                                     isSetting={counter.isSetting}
-                                     setIsSetting={setIsSettingToDispatch}
-                    />
-                    <DisplayCounter counter={counter.counter}
-                                    startValue={counter.startValue}
-                                    maxValue={counter.maxValue}
-                                    increase={increaseCounter}
-                                    reset={resetCounter}
-                                    error={error}
-                                    isSetting={counter.isSetting}
+                    <SettingsCounter pushValue={pushValue}/>
+                    <DisplayCounter error={error}
                                     messageStart={warningMessages.MESSAGE_START_LESS_MAX}
                     />
                 </div>

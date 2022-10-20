@@ -3,34 +3,34 @@ import '../../../App.css';
 import stylesMain from '../../../styles/Counter.module.css'
 import stylesDisplay from "../../../styles/DisplayCounter.module.css";
 import {Button} from "../../../UI/Button";
+import {useDispatch, useSelector} from "react-redux";
+import {increaseCounterAC, InitialStateType, resetCounterAC} from "../../../redux/counter-reducer";
+import {AppRootStateType} from "../../../redux/store";
 
 export type DisplayCounterPropsType = {
-    counter: number
-    startValue: number
-    maxValue: number
-    increase: () => void
-    reset: () => void
     error: string | null
-    isSetting: boolean
     messageStart: string
 }
 
 export const DisplayCounter: React.FC<DisplayCounterPropsType> = (props) => {
 
+    const dispatch = useDispatch();
+    const counter = useSelector<AppRootStateType, InitialStateType>( state => state.counter);
+
     const isInfo = props.error === props.messageStart;
 
-    let counterMonitorStopStyle = `${ props.counter === props.maxValue ? stylesDisplay.counterMonitorStop : '' }`;
+    let counterMonitorStopStyle = `${ counter.counter === counter.maxValue ? stylesDisplay.counterMonitorStop : '' }`;
     let startValueMaxStopStyle = `${ props.error && !isInfo ? stylesMain.counterMonitorStopError : '' }`;
     let startValueTitleStyle = `${ isInfo ? stylesMain.counterMonitorStartTitle : '' }`;
 
     /*----------------------------------------------------------------------------*/
 
     const onClickHandlerStart = () => {
-        props.increase();
+        dispatch(increaseCounterAC(counter.counter));
     }
 
     const onClickHandlerReset = () => {
-        props.reset();
+        dispatch(resetCounterAC(counter.startValue));
     }
 
     /*----------------------------------------------------------------------------*/
@@ -45,20 +45,20 @@ export const DisplayCounter: React.FC<DisplayCounterPropsType> = (props) => {
                          ${startValueTitleStyle}
                        `}
             >
-                { props.error ? props.error : props.counter }
+                { props.error ? props.error : counter.counter }
             </div>
 
             <div className={stylesDisplay.counterControl}>
                 <div className={stylesDisplay.increase}>
                     <Button name={'Увеличить'}
                             callback={onClickHandlerStart}
-                            disabled={props.counter === props.maxValue || props.isSetting}
+                            disabled={counter.counter === counter.maxValue || counter.isSetting}
                     />
                 </div>
                 <div className={stylesDisplay.reset}>
                     <Button name={'Сбросить'}
                             callback={onClickHandlerReset}
-                            disabled={props.counter === props.startValue || props.isSetting}
+                            disabled={counter.counter === counter.startValue || counter.isSetting}
                     />
                 </div>
             </div>

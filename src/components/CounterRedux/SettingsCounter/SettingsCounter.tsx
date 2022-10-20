@@ -4,35 +4,35 @@ import stylesMain from '../../../styles/Counter.module.css'
 import stylesSet from "../../../styles/SettingsCounter.module.css";
 import stylesDisplay from "../../../styles/DisplayCounter.module.css";
 import {Button} from "../../../UI/Button";
+import {useDispatch, useSelector} from "react-redux";
+import {AppRootStateType} from "../../../redux/store";
+import {InitialStateType, setCounterAC, setMaxValueAC, setStartValueAC} from "../../../redux/counter-reducer";
 
 export type SettingsCounterPropsType = {
-    startValue: number
-    setInputStartValue: (startValue: number) => void
-    maxValue: number
-    setInputMaxValue: (maxValue: number) => void
     pushValue: () => void
-    isSetting: boolean
-    setIsSetting: (isSetting: boolean) => void
 }
 
 export const SettingsCounter: React.FC<SettingsCounterPropsType> = (props) => {
 
+    const dispatch = useDispatch();
+    const counter = useSelector<AppRootStateType, InitialStateType>( state => state.counter);
+
     const onChangeClickHandlerMax = (event: ChangeEvent<HTMLInputElement>) => {
-        props.setIsSetting(true);
-        props.setInputMaxValue(+event.currentTarget.value);
+        dispatch(setCounterAC(counter.isSetting));
+        dispatch(setMaxValueAC(+event.currentTarget.value));
     }
 
     const onChangeClickHandlerStart = (event: ChangeEvent<HTMLInputElement>) => {
-        props.setIsSetting(true);
-        props.setInputStartValue(+event.currentTarget.value);
+        dispatch(setCounterAC(counter.isSetting));
+        dispatch(setStartValueAC(+event.currentTarget.value));
     }
 
-    let inputErrorStyle = `${props.startValue === props.maxValue && stylesSet.settings}`;
-    let inputErrorMaxStyle = `${props.maxValue < 0 && stylesSet.settings}`;
-    let inputErrorStartStyle = `${props.startValue < 0 && stylesSet.settings}`;
-    let inputErrorStarBiggerMaxStyle = `${props.startValue > props.maxValue && stylesSet.settings}`;
-    let inputErrorMaxNotIntegerStyle = `${!Number.isInteger(props.maxValue) && stylesSet.settings}`;
-    let inputErrorStartNotIntegerStyle = `${!Number.isInteger(props.startValue) && stylesSet.settings}`;
+    let inputErrorStyle = `${counter.startValue === counter.maxValue && stylesSet.settings}`;
+    let inputErrorMaxStyle = `${counter.maxValue < 0 && stylesSet.settings}`;
+    let inputErrorStartStyle = `${counter.startValue < 0 && stylesSet.settings}`;
+    let inputErrorStarBiggerMaxStyle = `${counter.startValue > counter.maxValue && stylesSet.settings}`;
+    let inputErrorMaxNotIntegerStyle = `${!Number.isInteger(counter.maxValue) && stylesSet.settings}`;
+    let inputErrorStartNotIntegerStyle = `${!Number.isInteger(counter.startValue) && stylesSet.settings}`;
 
     /*----------------------------------------------------------------------------*/
 
@@ -57,7 +57,7 @@ export const SettingsCounter: React.FC<SettingsCounterPropsType> = (props) => {
                                    step={1}
                                 //min={0}
                                 //placeholder={'Введите число'}
-                                   value={props.maxValue}
+                                   value={counter.maxValue}
                                    onChange={onChangeClickHandlerMax}
                                    className={`
                                         ${inputErrorStyle} 
@@ -77,7 +77,7 @@ export const SettingsCounter: React.FC<SettingsCounterPropsType> = (props) => {
                                    step={1}
                                 //min={0}
                                 //placeholder={'Введите число'}
-                                   value={props.startValue}
+                                   value={counter.startValue}
                                    onChange={onChangeClickHandlerStart}
                                    className={`
                                         ${inputErrorStyle} 
@@ -96,13 +96,13 @@ export const SettingsCounter: React.FC<SettingsCounterPropsType> = (props) => {
                 <div className={stylesSet.set}>
                     <Button name={'Установить'}
                             callback={onClickHandlerSet}
-                            disabled={!props.isSetting
-                                || props.startValue === props.maxValue
-                                || props.startValue > props.maxValue
-                                || props.startValue < 0
-                                || props.maxValue < 0
-                                || !Number.isInteger(props.maxValue)
-                                || !Number.isInteger(props.startValue)
+                            disabled={!counter.isSetting
+                                || counter.startValue === counter.maxValue
+                                || counter.startValue > counter.maxValue
+                                || counter.startValue < 0
+                                || counter.maxValue < 0
+                                || !Number.isInteger(counter.maxValue)
+                                || !Number.isInteger(counter.startValue)
                             }
                     />
                 </div>
