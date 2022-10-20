@@ -1,3 +1,6 @@
+import React from 'react';
+
+/*
 import React, {useEffect, useState} from 'react';
 import './App.css';
 import {CounterReducer} from "./components/CounterReducer/Counter/CounterReducer";
@@ -25,8 +28,8 @@ export const AppReducer = () => {
     return (
         <div className="App">
             <div className="wrapper">
-                {/*<CounterReduсer />*/} На всякий случай оставлю компоненту
+                {/!*<CounterReduсer />*!/} На всякий случай оставлю компоненту
             </div>
         </div>
     );
-}
+}*/

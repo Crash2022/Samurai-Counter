@@ -9,7 +9,7 @@ import {AppRootStateType} from "../../../redux/store";
 
 export type DisplayCounterPropsType = {
     error: string | null
-    messageStart: string
+    messageStart: string //MESSAGE_START_LESS_MAX
 }
 
 export const DisplayCounter: React.FC<DisplayCounterPropsType> = (props) => {

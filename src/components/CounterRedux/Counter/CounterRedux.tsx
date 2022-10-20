@@ -56,7 +56,7 @@ export const CounterRedux = () => {
             setError(warningMessages.MESSAGE_START_LESS_MAX);
         } else {
             dispatch(pushValueAC(false, counter.counter, counter.startValue, counter.maxValue));
-            setError('');
+            setError(warningMessages.MESSAGE_START_NULL);
         }
     }
 

@@ -6,7 +6,9 @@ import stylesDisplay from "../../../styles/DisplayCounter.module.css";
 import {Button} from "../../../UI/Button";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../../redux/store";
-import {InitialStateType, setCounterAC, setMaxValueAC, setStartValueAC} from "../../../redux/counter-reducer";
+import {InitialStateType,
+    pushValueAC, setCounterAC,
+    setMaxValueAC, setStartValueAC} from "../../../redux/counter-reducer";
 
 export type SettingsCounterPropsType = {
     pushValue: () => void
@@ -38,6 +40,13 @@ export const SettingsCounter: React.FC<SettingsCounterPropsType> = (props) => {
 
     const onClickHandlerSet = () => {
         props.pushValue()
+
+        /*if (counter.startValue > counter.maxValue) {
+            dispatch(setErrorAC(counter.error.MESSAGE_START_LESS_MAX));
+        } else {
+            dispatch(pushValueAC(false, counter.counter, counter.startValue, counter.maxValue));
+            dispatch(setErrorAC(counter.error.MESSAGE_START_NULL));
+        }*/
     }
 
     /*----------------------------------------------------------------------------*/

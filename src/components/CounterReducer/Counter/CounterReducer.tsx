@@ -1,3 +1,6 @@
+import React from 'react';
+
+/*
 import React, {useEffect, useReducer, useState} from 'react';
 import '../../../App.css';
 import {SettingsCounter} from "../SettingsCounter/SettingsCounter";
@@ -24,10 +27,11 @@ export const CounterReducer = () => {
         maxValue: 0,
         startValue: 0,
         //reset: 0,
-        isSetting: true
+        isSetting: true,
+        error: ''
     });
 
-    /*//const [inputMaxValue, setInputMaxValue] = useState<number>(0);
+    /!*!//const [inputMaxValue, setInputMaxValue] = useState<number>(0);
     //const [inputMaxValue, dispatchToMaxValueReducer] = useReducer(counterReducer, initialState);
 
     //const [inputStartValue, setInputStartValue] = useState<number>(0);
@@ -37,9 +41,9 @@ export const CounterReducer = () => {
     //const [counter, dispatchToCounterReducer] = useReducer(counterReducer, initialState);
 
     //const [isSetting, setIsSetting] = useState<boolean>(true);
-    //const [isSetting, dispatchToSettingReducer] = useReducer(counterReducer, initialState);*/
+    //const [isSetting, dispatchToSettingReducer] = useReducer(counterReducer, initialState);*!/
 
-    /*-------------------------------------------------------------------*/
+    /!*-------------------------------------------------------------------*!/
 
     const [error, setError] = useState<string | null>('');
 
@@ -52,7 +56,7 @@ export const CounterReducer = () => {
         MESSAGE_VALUE_NOT_INTEGER: 'Значение должно быть целым числом!'
     }
 
-    /*-------------------------------------------------------------------*/
+    /!*-------------------------------------------------------------------*!/
 
     //useEffect для вывода сообщений об ошибках
     useEffect(() => {
@@ -83,7 +87,7 @@ export const CounterReducer = () => {
         if (state.startValue > state.maxValue) {
             setError(warningMessages.MESSAGE_START_LESS_MAX);
         } else {
-           /* //setIsSetting(false);
+           /!* //setIsSetting(false);
             dispatchToReducer(setCounterAC(false));
 
             //setCounter(inputStartValue);
@@ -93,7 +97,7 @@ export const CounterReducer = () => {
             dispatchToReducer(setStartValueAC(state.startValue));
 
             //setInputMaxValue(inputMaxValue);
-            dispatchToReducer(setMaxValueAC(state.maxValue));*/
+            dispatchToReducer(setMaxValueAC(state.maxValue));*!/
 
             const action = pushValueAC(false, state.counter, state.startValue, state.maxValue);
             dispatchToReducer(action);
@@ -123,7 +127,7 @@ export const CounterReducer = () => {
         dispatchToReducer(setMaxValueAC(maxValue));
     }
 
-    /*-------------------------------------------------------------------*/
+    /!*-------------------------------------------------------------------*!/
 
     // важен порядок использования useEffect
 
@@ -168,7 +172,7 @@ export const CounterReducer = () => {
     //     localStorage.setItem('error', JSON.stringify(error));
     // }, [inputStartValue, inputMaxValue, isSetting, counter, error])
 
-    /*-------------------------------------------------------------------*/
+    /!*-------------------------------------------------------------------*!/
 
     return (
         <div className="App">
@@ -198,4 +202,4 @@ export const CounterReducer = () => {
             </div>
         </div>
     );
-}
+}*/
