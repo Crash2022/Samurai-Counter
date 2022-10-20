@@ -1,25 +1,14 @@
-import {combineReducers, createStore} from "redux";
-import {counterReducer,
-    IncreaseACType, ResetACType,
-    SetMaxValueACType, SetMinValueACType,
-    SetCounterACType, PushValueACType} from "./counter-reducer";
+import {combineReducers, legacy_createStore} from "redux";
+import {counterReducer} from "./counter-reducer";
 //import {throttle} from "lodash";
 
 const rootReducer = combineReducers({
     counter: counterReducer
 })
 
-export const store = createStore(rootReducer);
+export const store = legacy_createStore(rootReducer);
 
 export type AppRootStateType = ReturnType<typeof rootReducer>
-
-export type CounterActionsType =
-    IncreaseACType |
-    ResetACType |
-    SetCounterACType |
-    SetMinValueACType |
-    SetMaxValueACType |
-    PushValueACType;
 
 // @ts-ignore
 window.store = store;

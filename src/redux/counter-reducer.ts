@@ -1,19 +1,48 @@
-import {CounterActionsType} from "./store";
+export type CounterActionsType =
+    IncreaseACType |
+    ResetACType |
+    SetCounterACType |
+    SetMinValueACType |
+    SetMaxValueACType |
+    PushValueACType;
 
-export type InitialStateType = {
-    counter: number
-    maxValue: number
-    startValue: number
-    //reset: number
-    isSetting: boolean
-}
+// export type InitialStateType = {
+//     counter: number
+//     maxValue: number
+//     startValue: number
+//     //reset: number
+//     isSetting: boolean
+// }
 
-export const initialState: InitialStateType = {
+export type InitialStateType = typeof initialState
+export const initialState = {
     counter: 0,
     maxValue: 0,
     startValue: 0,
     //reset: 0,
     isSetting: true
+}
+
+export const counterReducer = (state = initialState,
+                               action: CounterActionsType): InitialStateType => {
+    switch(action.type) {
+        case 'INCREASE_COUNTER':
+            return {...state, counter: state.counter+1};
+        case 'RESET_COUNTER':
+            //return {...state, counter: action.startValue, reset: action.startValue};
+            return {...state, counter: action.startValue};
+        case 'SET_COUNTER':
+            return {...state, isSetting: action.isSetting};
+        case 'SET_MAX_VALUE':
+            return {...state, maxValue: action.maxValue};
+        case 'SET_START_VALUE':
+            return {...state, startValue: action.startValue};
+        case 'PUSH_VALUE':
+            return {...state, isSetting: action.isSetting, counter: action.startValue,
+                startValue: action.startValue, maxValue: action.maxValue};
+        default:
+            return state;
+    }
 }
 
 export type IncreaseACType = ReturnType<typeof increaseCounterAC>;
@@ -47,25 +76,3 @@ export const pushValueAC = (isSetting: boolean, counter: number,
     type: 'PUSH_VALUE',
     isSetting, counter, startValue, maxValue
 } as const);
-
-export const counterReducer = (state: InitialStateType = initialState,
-                               action: CounterActionsType): InitialStateType => {
-    switch(action.type) {
-        case 'INCREASE_COUNTER':
-            return {...state, counter: state.counter+1};
-        case 'RESET_COUNTER':
-            //return {...state, counter: action.startValue, reset: action.startValue};
-            return {...state, counter: action.startValue};
-        case 'SET_COUNTER':
-            return {...state, isSetting: action.isSetting};
-        case 'SET_MAX_VALUE':
-            return {...state, maxValue: action.maxValue};
-        case 'SET_START_VALUE':
-            return {...state, startValue: action.startValue};
-        case 'PUSH_VALUE':
-            return {...state, isSetting: action.isSetting, counter: action.startValue,
-                startValue: action.startValue, maxValue: action.maxValue};
-        default:
-            return state;
-    }
-}
