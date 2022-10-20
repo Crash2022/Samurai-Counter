@@ -4,23 +4,18 @@ import stylesMain from '../../../styles/Counter.module.css'
 import stylesDisplay from "../../../styles/DisplayCounter.module.css";
 import {Button} from "../../../UI/Button";
 import {useDispatch, useSelector} from "react-redux";
-import {increaseCounterAC, InitialStateType, resetCounterAC} from "../../../redux/counter-reducer";
+import {errorMessages, increaseCounterAC, InitialStateType, resetCounterAC} from "../../../redux/counter-reducer";
 import {AppRootStateType} from "../../../redux/store";
 
-export type DisplayCounterPropsType = {
-    error: string | null
-    messageStart: string //MESSAGE_START_LESS_MAX
-}
-
-export const DisplayCounter: React.FC<DisplayCounterPropsType> = (props) => {
+export const DisplayCounter = () => {
 
     const dispatch = useDispatch();
     const counter = useSelector<AppRootStateType, InitialStateType>( state => state.counter);
 
-    const isInfo = props.error === props.messageStart;
+    const isInfo = counter.errorMessage === errorMessages.MESSAGE_START_LESS_MAX;
 
     let counterMonitorStopStyle = `${ counter.counter === counter.maxValue ? stylesDisplay.counterMonitorStop : '' }`;
-    let startValueMaxStopStyle = `${ props.error && !isInfo ? stylesMain.counterMonitorStopError : '' }`;
+    let startValueMaxStopStyle = `${ counter.errorMessage && !isInfo ? stylesMain.counterMonitorStopError : '' }`;
     let startValueTitleStyle = `${ isInfo ? stylesMain.counterMonitorStartTitle : '' }`;
 
     /*----------------------------------------------------------------------------*/
@@ -28,7 +23,6 @@ export const DisplayCounter: React.FC<DisplayCounterPropsType> = (props) => {
     const onClickHandlerStart = () => {
         dispatch(increaseCounterAC(counter.counter));
     }
-
     const onClickHandlerReset = () => {
         dispatch(resetCounterAC(counter.startValue));
     }
@@ -45,7 +39,7 @@ export const DisplayCounter: React.FC<DisplayCounterPropsType> = (props) => {
                          ${startValueTitleStyle}
                        `}
             >
-                { props.error ? props.error : counter.counter }
+                { counter.errorMessage ? counter.errorMessage : counter.counter }
             </div>
 
             <div className={stylesDisplay.counterControl}>

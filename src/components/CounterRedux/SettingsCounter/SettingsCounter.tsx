@@ -7,14 +7,10 @@ import {Button} from "../../../UI/Button";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../../redux/store";
 import {InitialStateType,
-    pushValueAC, setCounterAC,
+    pushValueAC, setCounterAC, setErrorAC,
     setMaxValueAC, setStartValueAC} from "../../../redux/counter-reducer";
 
-export type SettingsCounterPropsType = {
-    pushValue: () => void
-}
-
-export const SettingsCounter: React.FC<SettingsCounterPropsType> = (props) => {
+export const SettingsCounter = () => {
 
     const dispatch = useDispatch();
     const counter = useSelector<AppRootStateType, InitialStateType>( state => state.counter);
@@ -22,11 +18,15 @@ export const SettingsCounter: React.FC<SettingsCounterPropsType> = (props) => {
     const onChangeClickHandlerMax = (event: ChangeEvent<HTMLInputElement>) => {
         dispatch(setCounterAC(counter.isSetting));
         dispatch(setMaxValueAC(+event.currentTarget.value));
+        dispatch(setCounterAC(true));
+        dispatch(setErrorAC());
     }
 
     const onChangeClickHandlerStart = (event: ChangeEvent<HTMLInputElement>) => {
         dispatch(setCounterAC(counter.isSetting));
         dispatch(setStartValueAC(+event.currentTarget.value));
+        dispatch(setCounterAC(true));
+        dispatch(setErrorAC());
     }
 
     let inputErrorStyle = `${counter.startValue === counter.maxValue && stylesSet.settings}`;
@@ -39,14 +39,9 @@ export const SettingsCounter: React.FC<SettingsCounterPropsType> = (props) => {
     /*----------------------------------------------------------------------------*/
 
     const onClickHandlerSet = () => {
-        props.pushValue()
-
-        /*if (counter.startValue > counter.maxValue) {
-            dispatch(setErrorAC(counter.error.MESSAGE_START_LESS_MAX));
-        } else {
-            dispatch(pushValueAC(false, counter.counter, counter.startValue, counter.maxValue));
-            dispatch(setErrorAC(counter.error.MESSAGE_START_NULL));
-        }*/
+        dispatch(pushValueAC(false, counter.counter, counter.startValue,
+            counter.maxValue));
+        dispatch(setErrorAC());
     }
 
     /*----------------------------------------------------------------------------*/

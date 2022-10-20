@@ -7,6 +7,15 @@ export type CounterActionsType =
     SetErrorACType |
     PushValueACType;
 
+export const errorMessages = {
+    //MESSAGE_START: 'Введите значения и нажмите кнопку установить',
+    MESSAGE_START_NULL: '',
+    MESSAGE_ZERO: 'Значение должно быть больше 0!',
+    MESSAGE_START_LESS_MAX: 'Начальное значение должно быть меньше максимального!',
+    MESSAGE_START_NOT_MAX: 'Начальное значение не должно равняться максимальному!',
+    MESSAGE_VALUE_NOT_INTEGER: 'Значение должно быть целым числом!'
+}
+
 // export type InitialStateType = {
 //     counter: number
 //     maxValue: number
@@ -15,15 +24,6 @@ export type CounterActionsType =
 //     isSetting: boolean
 //     errorMessage: string
 // }
-
-const errorMessages = {
-    //MESSAGE_START: 'Введите значения и нажмите кнопку установить',
-    //MESSAGE_START_NULL: '',
-    MESSAGE_ZERO: 'Значение должно быть больше 0!',
-    MESSAGE_START_LESS_MAX: 'Начальное значение должно быть меньше максимального!',
-    MESSAGE_START_NOT_MAX: 'Начальное значение не должно равняться максимальному!',
-    MESSAGE_VALUE_NOT_INTEGER: 'Значение должно быть целым числом!'
-}
 
 export type InitialStateType = typeof initialState
 export const initialState = {
@@ -39,9 +39,7 @@ export const counterReducer = (state = initialState,
                                action: CounterActionsType): InitialStateType => {
     switch(action.type) {
         case 'INCREASE_COUNTER':
-            // code here
-            return {...state,
-                counter: state.counter+1};
+            return {...state, counter: state.counter+1};
         case 'RESET_COUNTER':
             return {...state, counter: action.startValue};
         case 'SET_COUNTER':
@@ -50,11 +48,48 @@ export const counterReducer = (state = initialState,
             return {...state, maxValue: action.maxValue};
         case 'SET_START_VALUE':
             return {...state, startValue: action.startValue};
-        /*case 'SET_ERROR':
-            return {...state, startMessage: action.error};*/
-        case 'PUSH_VALUE':
-            return {...state, isSetting: action.isSetting, counter: action.startValue,
-                startValue: action.startValue, maxValue: action.maxValue};
+        case 'SET_ERROR': {
+
+            const stateCopy = {...state}
+
+            if (state.startValue > state.maxValue) {
+                stateCopy.errorMessage = errorMessages.MESSAGE_START_LESS_MAX;
+            } else {
+                stateCopy.errorMessage = errorMessages.MESSAGE_START_NULL;
+            }
+            if (stateCopy.startValue === state.maxValue) {
+                stateCopy.errorMessage = errorMessages.MESSAGE_START_NOT_MAX;
+            }
+            if (stateCopy.startValue < 0) {
+                stateCopy.errorMessage = errorMessages.MESSAGE_ZERO;
+            }
+            if (stateCopy.maxValue < 0) {
+                stateCopy.errorMessage = errorMessages.MESSAGE_ZERO;
+            }
+            if (!Number.isInteger(state.maxValue)) {
+                stateCopy.errorMessage = errorMessages.MESSAGE_VALUE_NOT_INTEGER;
+            }
+            if (!Number.isInteger(state.startValue)) {
+                stateCopy.errorMessage = errorMessages.MESSAGE_VALUE_NOT_INTEGER;
+            }
+
+            return stateCopy;
+        }
+        case 'PUSH_VALUE': {
+
+            const stateCopy = {...state}
+
+            if (state.startValue > state.maxValue) {
+                stateCopy.errorMessage = errorMessages.MESSAGE_START_LESS_MAX;
+            } else {
+                stateCopy.errorMessage = errorMessages.MESSAGE_START_NULL;
+            }
+
+            return {
+                ...stateCopy, isSetting: action.isSetting, counter: action.startValue,
+                startValue: action.startValue, maxValue: action.maxValue
+            };
+        }
         default:
             return state;
     }
@@ -86,8 +121,8 @@ export const setStartValueAC = (startValue: number) => ({
 } as const);
 
 export type SetErrorACType = ReturnType<typeof setErrorAC>;
-export const setErrorAC = (error: string) => ({
-    type: 'SET_ERROR', error
+export const setErrorAC = () => ({
+    type: 'SET_ERROR'
 } as const);
 
 export type PushValueACType = ReturnType<typeof pushValueAC>;

@@ -1,64 +1,20 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import '../../../App.css';
 import {SettingsCounter} from "../SettingsCounter/SettingsCounter";
 import {DisplayCounter} from "../DisplayCounter/DisplayCounter";
-import {InitialStateType, pushValueAC} from "../../../redux/counter-reducer";
-import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateType} from "../../../redux/store";
+import {setErrorAC} from "../../../redux/counter-reducer";
+import {useDispatch} from "react-redux";
 
 export const CounterRedux = () => {
 
     const dispatch = useDispatch();
-    const counter = useSelector<AppRootStateType, InitialStateType>( state => state.counter);
+    //const counter = useSelector<AppRootStateType, InitialStateType>( state => state.counter);
 
     /*-------------------------------------------------------------------*/
 
-    const [error, setError] = useState<string | null>('');
-
-    const warningMessages = {
-        //MESSAGE_START: 'Введите значения и нажмите кнопку установить',
-        MESSAGE_START_NULL: '',
-        MESSAGE_ZERO: 'Значение должно быть больше 0!',
-        MESSAGE_START_LESS_MAX: 'Начальное значение должно быть меньше максимального!',
-        MESSAGE_START_NOT_MAX: 'Начальное значение не должно равняться максимальному!',
-        MESSAGE_VALUE_NOT_INTEGER: 'Значение должно быть целым числом!'
-    }
-
-    /*-------------------------------------------------------------------*/
-
-    //useEffect для вывода сообщений об ошибках
     useEffect(() => {
-        if (counter.startValue > counter.maxValue) {
-            setError(warningMessages.MESSAGE_START_LESS_MAX);
-        } else {
-            setError(warningMessages.MESSAGE_START_NULL);
-        }
-        if (counter.startValue === counter.maxValue) {
-            setError(warningMessages.MESSAGE_START_NOT_MAX);
-        }
-        if (counter.startValue < 0) {
-            setError(warningMessages.MESSAGE_ZERO);
-        }
-        if (counter.maxValue < 0) {
-            setError(warningMessages.MESSAGE_ZERO);
-        }
-        if (!Number.isInteger(counter.maxValue)) {
-            setError(warningMessages.MESSAGE_VALUE_NOT_INTEGER);
-        }
-        if (!Number.isInteger(counter.startValue)) {
-            setError(warningMessages.MESSAGE_VALUE_NOT_INTEGER);
-        }
-    }, [counter.startValue, counter.maxValue]);
-
-    const pushValue = () => {
-
-        if (counter.startValue > counter.maxValue) {
-            setError(warningMessages.MESSAGE_START_LESS_MAX);
-        } else {
-            dispatch(pushValueAC(false, counter.counter, counter.startValue, counter.maxValue));
-            setError(warningMessages.MESSAGE_START_NULL);
-        }
-    }
+            dispatch(setErrorAC());
+    },[]);
 
     /*-------------------------------------------------------------------*/
 
@@ -115,10 +71,8 @@ export const CounterRedux = () => {
 
             <div className="wrapper">
                 <div className="counterWrapper">
-                    <SettingsCounter pushValue={pushValue}/>
-                    <DisplayCounter error={error}
-                                    messageStart={warningMessages.MESSAGE_START_LESS_MAX}
-                    />
+                    <SettingsCounter/>
+                    <DisplayCounter/>
                 </div>
             </div>
         </div>
