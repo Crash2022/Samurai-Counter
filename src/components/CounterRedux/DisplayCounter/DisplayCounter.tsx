@@ -12,20 +12,20 @@ export const DisplayCounter = () => {
     const dispatch = useDispatch();
     const counter = useSelector<AppRootStateType, InitialStateType>( state => state.counter);
 
-    const isInfo = counter.errorMessage === errorMessages.MESSAGE_START_LESS_MAX;
-
-    let counterMonitorStopStyle = `${ counter.counter === counter.maxValue ? stylesDisplay.counterMonitorStop : '' }`;
-    let startValueMaxStopStyle = `${ counter.errorMessage && !isInfo ? stylesMain.counterMonitorStopError : '' }`;
-    let startValueTitleStyle = `${ isInfo ? stylesMain.counterMonitorStartTitle : '' }`;
-
-    /*----------------------------------------------------------------------------*/
-
     const onClickHandlerIncrease = () => {
         dispatch(increaseCounterAC(counter.counter));
     }
     const onClickHandlerReset = () => {
         dispatch(resetCounterAC(counter.startValue));
     }
+
+    /*----------------------------------------------------------------------------*/
+
+    const isInfo = counter.errorMessage === errorMessages.MESSAGE_START_LESS_MAX;
+
+    let counterMonitorStopStyle = `${ counter.counter === counter.maxValue ? stylesDisplay.counterMonitorStop : '' }`;
+    let startValueMaxStopStyle = `${ counter.errorMessage && !isInfo ? stylesMain.counterMonitorStopError : '' }`;
+    let startValueTitleStyle = `${ isInfo ? stylesMain.counterMonitorStartTitle : '' }`;
 
     /*----------------------------------------------------------------------------*/
 

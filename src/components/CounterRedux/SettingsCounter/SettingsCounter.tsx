@@ -16,18 +16,24 @@ export const SettingsCounter = () => {
     const counter = useSelector<AppRootStateType, InitialStateType>( state => state.counter);
 
     const onChangeClickHandlerMax = (event: ChangeEvent<HTMLInputElement>) => {
-        //dispatch(setCounterAC(counter.isSetting));
         dispatch(setMaxValueAC(+event.currentTarget.value));
         dispatch(setCounterAC(true));
         dispatch(setErrorAC());
     }
 
     const onChangeClickHandlerStart = (event: ChangeEvent<HTMLInputElement>) => {
-        //dispatch(setCounterAC(counter.isSetting));
         dispatch(setStartValueAC(+event.currentTarget.value));
         dispatch(setCounterAC(true));
         dispatch(setErrorAC());
     }
+
+    const onClickHandlerSetSetting = () => {
+        dispatch(pushValueAC(false, counter.counter,
+            counter.startValue, counter.maxValue));
+        dispatch(setErrorAC());
+    }
+
+    /*----------------------------------------------------------------------------*/
 
     let inputErrorStyle = `${counter.startValue === counter.maxValue && stylesSet.settings}`;
     let inputErrorMaxStyle = `${counter.maxValue < 0 && stylesSet.settings}`;
@@ -35,14 +41,6 @@ export const SettingsCounter = () => {
     let inputErrorStarBiggerMaxStyle = `${counter.startValue > counter.maxValue && stylesSet.settings}`;
     let inputErrorMaxNotIntegerStyle = `${!Number.isInteger(counter.maxValue) && stylesSet.settings}`;
     let inputErrorStartNotIntegerStyle = `${!Number.isInteger(counter.startValue) && stylesSet.settings}`;
-
-    /*----------------------------------------------------------------------------*/
-
-    const onClickHandlerSet = () => {
-        dispatch(pushValueAC(false, counter.counter,
-            counter.startValue, counter.maxValue));
-        dispatch(setErrorAC());
-    }
 
     /*----------------------------------------------------------------------------*/
 
@@ -99,7 +97,7 @@ export const SettingsCounter = () => {
             <div className={stylesDisplay.counterControl}>
                 <div className={stylesSet.set}>
                     <Button name={'Установить'}
-                            callback={onClickHandlerSet}
+                            callback={onClickHandlerSetSetting}
                             disabled={!counter.isSetting
                                 || counter.startValue === counter.maxValue
                                 || counter.startValue > counter.maxValue
