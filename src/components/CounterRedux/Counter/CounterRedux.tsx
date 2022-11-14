@@ -17,8 +17,11 @@ export const CounterRedux = () => {
 
     /*-------------------------------------------------------------------*/
 
-    // важен порядок использования useEffect
+    // useEffect(() => {
+    //     dispatch(setValueFromLocalStorageTC());
+    // }, [])
 
+    // важен порядок использования useEffect для localStorage
     // useEffect(() => {
     //     let localValueMax = localStorage.getItem('inputMaxValue')
     //     if (localValueMax) {

@@ -4,7 +4,10 @@ import stylesMain from '../../../styles/Counter.module.css'
 import stylesDisplay from "../../../styles/DisplayCounter.module.css";
 import {Button} from "../../../UI/Button";
 import {useDispatch, useSelector} from "react-redux";
-import {errorMessages, increaseCounterAC, InitialStateType, resetCounterAC} from "../../../redux/counter-reducer";
+import {errorMessages,
+    increaseCounterAC,
+    resetCounterAC,
+    InitialStateType} from "../../../redux/counter-reducer";
 import {AppRootStateType} from "../../../redux/store";
 
 export const DisplayCounter = () => {
@@ -13,7 +16,8 @@ export const DisplayCounter = () => {
     const counter = useSelector<AppRootStateType, InitialStateType>( state => state.counter);
 
     const onClickHandlerIncrease = () => {
-        dispatch(increaseCounterAC(counter.counter));
+        dispatch(increaseCounterAC(/*counter.counter*/));
+        // dispatch(increaseCounterTC(counter.counter+1));
     }
     const onClickHandlerReset = () => {
         dispatch(resetCounterAC(counter.startValue));

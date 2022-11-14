@@ -1,3 +1,7 @@
+import {Dispatch} from "redux";
+import {AppRootStateType} from "./store";
+import {ThunkAction, ThunkDispatch} from "redux-thunk";
+
 export type CounterActionsType =
     IncreaseACType |
     ResetACType |
@@ -5,7 +9,8 @@ export type CounterActionsType =
     SetMinValueACType |
     SetMaxValueACType |
     SetErrorACType |
-    PushValueACType;
+    PushValueACType |
+    SetValueFromLocalStorageACType;
 
 export const errorMessages = {
     //MESSAGE_START: 'Введите значения и нажмите кнопку установить',
@@ -24,7 +29,7 @@ export const errorMessages = {
 //     errorMessage: string
 // }
 
-export type InitialStateType = typeof initialState
+export type InitialStateType = typeof initialState;
 export const initialState = {
     counter: 0,
     maxValue: 0,
@@ -88,14 +93,18 @@ export const counterReducer = (state = initialState,
                 startValue: action.startValue, maxValue: action.maxValue
             };
         }
+        case 'SET_VALUE_FROM_LOCAL_STORAGE':
+            return {...state, counter: action.counter};
         default:
             return state;
     }
 }
 
+/*------------------------------ACTIONS------------------------------*/
+
 export type IncreaseACType = ReturnType<typeof increaseCounterAC>;
-export const increaseCounterAC = (counter: number) => ({
-    type: 'INCREASE_COUNTER', counter
+export const increaseCounterAC = (/*counter: number*/) => ({
+    type: 'INCREASE_COUNTER'/*, counter*/
 } as const);
 
 export type ResetACType = ReturnType<typeof resetCounterAC>;
@@ -129,3 +138,28 @@ export const pushValueAC = (isSetting: boolean, counter: number,
     type: 'PUSH_VALUE',
     isSetting, counter, startValue, maxValue
 } as const);
+
+export type SetValueFromLocalStorageACType = ReturnType<typeof setValueFromLocalStorageAC>;
+export const setValueFromLocalStorageAC = (counter: number) => ({
+    type: 'SET_VALUE_FROM_LOCAL_STORAGE', counter
+} as const);
+
+/*------------------------------THUNK------------------------------*/
+
+// export const increaseCounterTC: ThunkAction<void, AppRootStateType, { }, CounterActionsType> = (counterValue: number) => {
+//     return (dispatch: ThunkDispatch<AppRootStateType, unknown, CounterActionsType> /*, getState: () => AppRootStateType*/) => {
+//         //let currentValue = getState().counter.counter;
+//         localStorage.setItem('counterValue', JSON.stringify(counterValue));
+//         dispatch(increaseCounterAC());
+//     }
+// }
+//
+// export const setValueFromLocalStorageTC: ThunkAction<void, AppRootStateType, { }, CounterActionsType> = () => {
+//     return (dispatch: ThunkDispatch<AppRootStateType, unknown, CounterActionsType>) => {
+//         let localCounterValue = localStorage.getItem('counterValue')
+//             if (localCounterValue) {
+//                 let newLocalCounterValue = JSON.parse(localCounterValue);
+//                 dispatch(setValueFromLocalStorageAC(newLocalCounterValue));
+//             }
+//     }
+// }
