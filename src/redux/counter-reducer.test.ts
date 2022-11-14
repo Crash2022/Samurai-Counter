@@ -13,13 +13,13 @@ beforeEach(() => {
     };
 })
 
-// test('counter should be increase', ()=> {
-//
-//     const action = increaseCounterAC(0);
-//     const endState = counterReducer(startState, action);
-//
-//     expect(endState.counter).toBe(1);
-// });
+test('counter should be increase', ()=> {
+
+    //const action = increaseCounterAC();
+    const endState = counterReducer(startState, increaseCounterAC());
+
+    expect(endState.counter).toBe(1);
+});
 
 test('counter should be reset to start value', ()=> {
 

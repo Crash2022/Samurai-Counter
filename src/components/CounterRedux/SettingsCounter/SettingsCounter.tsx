@@ -4,15 +4,15 @@ import stylesMain from '../../../styles/Counter.module.css'
 import stylesSet from "../../../styles/SettingsCounter.module.css";
 import stylesDisplay from "../../../styles/DisplayCounter.module.css";
 import {Button} from "../../../UI/Button";
-import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateType} from "../../../redux/store";
+import {useSelector} from "react-redux";
+import {AppRootStateType, useAppDispatch} from "../../../redux/store";
 import {InitialStateType,
     pushValueAC, setCounterAC, setErrorAC,
     setMaxValueAC, setStartValueAC} from "../../../redux/counter-reducer";
 
 export const SettingsCounter = () => {
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const counter = useSelector<AppRootStateType, InitialStateType>( state => state.counter);
 
     const onChangeClickHandlerMax = (event: ChangeEvent<HTMLInputElement>) => {

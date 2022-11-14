@@ -1,5 +1,5 @@
 import {Dispatch} from "redux";
-import {AppRootStateType} from "./store";
+import {AppRootStateType, AppThunk} from "./store";
 
 export type CounterActionsType =
     IncreaseACType |
@@ -146,40 +146,20 @@ export const setValueFromLocalStorageAC = (counter: number) => ({
 
 /*------------------------------THUNK------------------------------*/
 
-export const increaseCounterTC = () => {
+export const increaseCounterTC = (): AppThunk => {
     return (dispatch: Dispatch , getState: () => AppRootStateType) => {
         let currentValue = getState().counter.counter;
-        localStorage.setItem('counterValue', JSON.stringify(currentValue+1));
+        localStorage.setItem('counter', JSON.stringify(currentValue+1));
         dispatch(increaseCounterAC());
     }
 }
 
-export const setValueFromLocalStorageTC = () => {
+export const setValueFromLocalStorageTC = (): AppThunk => {
     return (dispatch: Dispatch) => {
-        let localCounterValue = localStorage.getItem('counterValue')
+        let localCounterValue = localStorage.getItem('counter')
             if (localCounterValue) {
                 let newLocalCounterValue = JSON.parse(localCounterValue);
                 dispatch(setValueFromLocalStorageAC(newLocalCounterValue));
             }
     }
 }
-
-
-
-// export const increaseCounterTC: ThunkAction<void, AppRootStateType, { }, CounterActionsType> = (counterValue: number) => {
-//     return (dispatch: ThunkDispatch<AppRootStateType, unknown, CounterActionsType> /*, getState: () => AppRootStateType*/) => {
-//         //let currentValue = getState().counter.counter;
-//         localStorage.setItem('counterValue', JSON.stringify(counterValue));
-//         dispatch(increaseCounterAC());
-//     }
-// }
-//
-// export const setValueFromLocalStorageTC: ThunkAction<void, AppRootStateType, { }, CounterActionsType> = () => {
-//     return (dispatch: ThunkDispatch<AppRootStateType, unknown, CounterActionsType>) => {
-//         let localCounterValue = localStorage.getItem('counterValue')
-//             if (localCounterValue) {
-//                 let newLocalCounterValue = JSON.parse(localCounterValue);
-//                 dispatch(setValueFromLocalStorageAC(newLocalCounterValue));
-//             }
-//     }
-// }

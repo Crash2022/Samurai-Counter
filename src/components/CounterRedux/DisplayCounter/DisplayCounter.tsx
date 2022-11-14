@@ -3,23 +3,23 @@ import '../../../App.css';
 import stylesMain from '../../../styles/Counter.module.css'
 import stylesDisplay from "../../../styles/DisplayCounter.module.css";
 import {Button} from "../../../UI/Button";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {errorMessages,
     increaseCounterAC,
     resetCounterAC,
-    InitialStateType} from "../../../redux/counter-reducer";
-import {AppRootStateType} from "../../../redux/store";
+    InitialStateType, increaseCounterTC} from "../../../redux/counter-reducer";
+import {AppRootStateType, useAppDispatch} from "../../../redux/store";
 
 export const DisplayCounter = () => {
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const counter = useSelector<AppRootStateType, InitialStateType>( state => state.counter);
 
     const onClickHandlerIncrease = () => {
         dispatch(increaseCounterAC());
 
-        // вариант через Thunk, но типизация ругается
-        // dispatch(increaseCounterTC(counter.counter+1));
+        // вариант через Thunk
+        // dispatch(increaseCounterTC());
     }
     const onClickHandlerReset = () => {
         dispatch(resetCounterAC(counter.startValue));

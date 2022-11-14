@@ -2,12 +2,12 @@ import React, {useEffect} from 'react';
 import '../../../App.css';
 import {SettingsCounter} from "../SettingsCounter/SettingsCounter";
 import {DisplayCounter} from "../DisplayCounter/DisplayCounter";
-import {setErrorAC} from "../../../redux/counter-reducer";
-import {useDispatch} from "react-redux";
+import {setErrorAC, setValueFromLocalStorageTC} from "../../../redux/counter-reducer";
+import {useAppDispatch} from "../../../redux/store";
 
 export const CounterRedux = () => {
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     /*-------------------------------------------------------------------*/
 
@@ -17,7 +17,7 @@ export const CounterRedux = () => {
 
     /*-------------------------------------------------------------------*/
 
-    // вариант через Thunk, но типизация ругается?!
+    // вариант через Thunk
     // useEffect(() => {
     //     dispatch(setValueFromLocalStorageTC());
     // }, [])
