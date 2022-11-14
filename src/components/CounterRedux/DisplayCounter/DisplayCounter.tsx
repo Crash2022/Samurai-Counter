@@ -16,7 +16,9 @@ export const DisplayCounter = () => {
     const counter = useSelector<AppRootStateType, InitialStateType>( state => state.counter);
 
     const onClickHandlerIncrease = () => {
-        dispatch(increaseCounterAC(/*counter.counter*/));
+        dispatch(increaseCounterAC());
+
+        // вариант через Thunk, но типизация ругается
         // dispatch(increaseCounterTC(counter.counter+1));
     }
     const onClickHandlerReset = () => {

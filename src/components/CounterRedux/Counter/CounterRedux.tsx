@@ -17,6 +17,7 @@ export const CounterRedux = () => {
 
     /*-------------------------------------------------------------------*/
 
+    // вариант через Thunk, но типизация ругается?!
     // useEffect(() => {
     //     dispatch(setValueFromLocalStorageTC());
     // }, [])

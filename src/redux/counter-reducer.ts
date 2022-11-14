@@ -1,6 +1,5 @@
 import {Dispatch} from "redux";
 import {AppRootStateType} from "./store";
-import {ThunkAction, ThunkDispatch} from "redux-thunk";
 
 export type CounterActionsType =
     IncreaseACType |
@@ -103,8 +102,8 @@ export const counterReducer = (state = initialState,
 /*------------------------------ACTIONS------------------------------*/
 
 export type IncreaseACType = ReturnType<typeof increaseCounterAC>;
-export const increaseCounterAC = (/*counter: number*/) => ({
-    type: 'INCREASE_COUNTER'/*, counter*/
+export const increaseCounterAC = () => ({
+    type: 'INCREASE_COUNTER'
 } as const);
 
 export type ResetACType = ReturnType<typeof resetCounterAC>;
@@ -139,12 +138,33 @@ export const pushValueAC = (isSetting: boolean, counter: number,
     isSetting, counter, startValue, maxValue
 } as const);
 
+// AC для варианта через Thunk
 export type SetValueFromLocalStorageACType = ReturnType<typeof setValueFromLocalStorageAC>;
 export const setValueFromLocalStorageAC = (counter: number) => ({
     type: 'SET_VALUE_FROM_LOCAL_STORAGE', counter
 } as const);
 
 /*------------------------------THUNK------------------------------*/
+
+export const increaseCounterTC = () => {
+    return (dispatch: Dispatch , getState: () => AppRootStateType) => {
+        let currentValue = getState().counter.counter;
+        localStorage.setItem('counterValue', JSON.stringify(currentValue+1));
+        dispatch(increaseCounterAC());
+    }
+}
+
+export const setValueFromLocalStorageTC = () => {
+    return (dispatch: Dispatch) => {
+        let localCounterValue = localStorage.getItem('counterValue')
+            if (localCounterValue) {
+                let newLocalCounterValue = JSON.parse(localCounterValue);
+                dispatch(setValueFromLocalStorageAC(newLocalCounterValue));
+            }
+    }
+}
+
+
 
 // export const increaseCounterTC: ThunkAction<void, AppRootStateType, { }, CounterActionsType> = (counterValue: number) => {
 //     return (dispatch: ThunkDispatch<AppRootStateType, unknown, CounterActionsType> /*, getState: () => AppRootStateType*/) => {
